@@ -11,6 +11,8 @@ import Topography from './components/Topography';
 import LogoLoop from './components/LogoLoop';
 import Laptop from './components/Laptop';
 import { useEffect, useState } from 'react';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact, SiVite, SiOpencv, SiTensorflow, SiRaspberrypi, SiEspressif, SiArduino, SiGithub, SiClaude, SiVercel, SiLinux, SiGnu, SiNixos, SiDocker, SiGnubash } from 'react-icons/si';
 
 // ---- Edit your content here ----
@@ -114,6 +116,15 @@ export default function App() {
     document.documentElement.lang = lang;
     try { localStorage.setItem('lang', lang); } catch {}
   }, [lang]);
+  // smooth scrolling (skipped for people who prefer reduced motion)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1, anchors: true });
+    let id;
+    const raf = time => { lenis.raf(time); id = requestAnimationFrame(raf); };
+    id = requestAnimationFrame(raf);
+    return () => { cancelAnimationFrame(id); lenis.destroy(); };
+  }, []);
   const t = T[lang];
   const toggleLang = () => setLang(l => (l === 'en' ? 'es' : 'en'));
   const gallery = GALLERY.map((g, i) => ({ ...g, label: t.gallery[i] }));
