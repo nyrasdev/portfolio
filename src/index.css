@@ -145,3 +145,13 @@ footer { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); disp
 .logo-band { position: relative; height: 140px; display: flex; align-items: center; overflow: hidden; border-bottom: 1px solid var(--line); color: var(--muted); }
 .logo-band a { color: inherit; }
 .logo-band a:hover { color: var(--fg); }
+
+/* scroll-driven laptop */
+.laptop { position: relative; height: 260vh; }
+.laptop-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.laptop-canvas { position: absolute !important; inset: 0; }
+.laptop-copy { position: absolute; z-index: 1; top: 12vh; left: 0; right: 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r); pointer-events: none; }
+.laptop-copy .path { position: static; }
+.laptop-copy h2 { font-family: var(--display); font-weight: 800; font-stretch: 75%; font-variation-settings: 'wdth' 75; font-size: clamp(2.6rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.03em; }
+.laptop-copy p.muted { max-width: 46ch; }

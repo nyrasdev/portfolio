@@ -9,6 +9,7 @@ import Lanyard from './components/Lanyard';
 import ScrollExpand from './components/ScrollExpand';
 import Topography from './components/Topography';
 import LogoLoop from './components/LogoLoop';
+import Laptop from './components/Laptop';
 import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact, SiVite, SiOpencv, SiTensorflow, SiRaspberrypi, SiEspressif, SiArduino, SiGithub, SiClaude, SiVercel, SiLinux } from 'react-icons/si';
 
 // ---- Edit your content here ----
@@ -133,6 +134,12 @@ export default function App() {
           <p>A coin-reading robot we took from Panamá's regionals to the WRO Open Championship in Zagreb.</p>
         </ScrollExpand>
       </div>
+
+      <Laptop>
+        <p className="path"><span>~/</span>software</p>
+        <h2>The other half is code.</h2>
+        <p className="muted">BALBOITA's interface, showing what the robot found and the story behind it. Scroll to open.</p>
+      </Laptop>
 
       <main>
         <Section id="work" path="work">
