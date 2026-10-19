@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="264" viewBox="0 0 400 264">
+<rect width="400" height="264" fill="#12161d"/>
+<rect x="0.5" y="0.5" width="399" height="263" fill="none" stroke="#232a35"/>
+<text x="28" y="48" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8a94a3" letter-spacing="2">BUILD TOOL</text>
+<text x="28" y="160" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="700" font-size="44" fill="#e6eaf0">Vite</text>
+<rect x="28" y="196" width="40" height="4" rx="2" fill="#38bdf8"/>
+</svg>

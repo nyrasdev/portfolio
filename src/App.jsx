@@ -1,9 +1,18 @@
-import Dither from './components/Dither';
+import GradientASCII from './components/GradientASCII';
 import DecryptedText from './components/DecryptedText';
 import SpotlightCard from './components/SpotlightCard';
+import HalftoneReveal from './components/HalftoneReveal';
+import AccordionGallery from './components/AccordionGallery';
+import DriftWall from './components/DriftWall';
 import Dock from './components/Dock';
 
 // ---- Edit your content here ----
+const ME = {
+  handle: 'nyras',
+  age: 16, // TODO: confirm
+  role: 'Software engineer',
+};
+
 const LINKS = {
   instagram: 'https://instagram.com/utmpx',
   github: 'https://github.com/nyrasdev',
@@ -12,6 +21,19 @@ const LINKS = {
 };
 
 const STACK = ['Raspberry Pi 5', 'ESP32', 'HuskyLens', 'HX711 load cell', 'TensorFlow Lite', 'OpenCV', 'Python', 'SQLite'];
+
+const GALLERY = [
+  { image: '/gallery/montaje.webp', label: 'The build', alt: 'BALBOITA frame fully assembled next to its monitor' },
+  { image: '/gallery/bill-panda.jpg', label: 'Scanning', alt: 'A banknote placed under the BALBOITA camera' },
+  { image: '/gallery/robot-front.webp', label: 'Live demo', alt: 'BALBOITA scanning a banknote with the mascot on its front screen' },
+  { image: '/gallery/ui-billete.jpg', label: 'Bill result', alt: 'BALBOITA interface showing the result for a banknote' },
+  { image: '/gallery/screen-pound.webp', label: 'Coin result', alt: 'BALBOITA interface showing the result for a coin' },
+];
+
+const TOOLS = [
+  'python', 'javascript', 'c', 'html-css', 'sql', 'react', 'vite', 'opencv', 'tensorflow-lite',
+  'raspberry-pi', 'esp32', 'github', 'claude-code', 'codex', 'vs-code', 'vercel', 'linux',
+].map(slug => ({ image: `/stack/${slug}.svg`, title: slug.replace(/-/g, ' ') }));
 
 const SIDE_PROJECTS = [
   {
@@ -60,37 +82,22 @@ export default function App() {
     <>
       <header className="hero">
         <div className="hero-bg" aria-hidden="true">
-          <Dither
-            waveColor={[0.3, 0.38, 0.85]}
-            backgroundColor={[0.03, 0.04, 0.06]}
-            colorNum={4}
-            pixelSize={2}
-            waveSpeed={0.03}
-            waveAmplitude={0.3}
-            enableMouseInteraction
-            mouseRadius={0.4}
-          />
+          <GradientASCII colors={['#1e3fd8', '#f6f8ff', '#a5d8ff', '#38bdf8']} shape="horizon" characters=" =+xX0S8#@" cellSize={18} density={0.8} />
         </div>
         <div className="hero-fade" aria-hidden="true" />
         <div className="wrap hero-inner">
           <p className="record">
-            <span>ut_user=<b>fer</b></span>
+            <span>ut_user=<b>{ME.handle}</b></span>
             <span>ut_host=<b>panamá</b></span>
             <span>ut_line=<b>pts/0</b></span>
             <span className="live">USER_PROCESS</span>
           </p>
           <h1>
-            <DecryptedText
-              text="Fer González"
-              animateOn="view"
-              sequential
-              revealDirection="start"
-              speed={45}
-              characters="01#$%&*<>/\\|_"
-              encryptedClassName="enc"
-            />
+            <DecryptedText text={ME.handle} animateOn="view" sequential revealDirection="start" speed={60} characters="01#$%&*<>/\\|_" encryptedClassName="enc" />
           </h1>
-          <p className="tag">Student in Panama building robots, embedded systems and the software that runs on them.</p>
+          <p className="tag">
+            <b>{ME.role}</b> · {ME.age}. I build robots, embedded systems and the software that runs on them.
+          </p>
         </div>
       </header>
 
@@ -99,7 +106,9 @@ export default function App() {
           <h2 id="work">Projects</h2>
 
           <SpotlightCard className="feature" theme="dark" spotlightColor="#7d9bff" intensity={0.18}>
-            <img className="shot" src="/balboita.webp" alt="BALBOITA scanning a banknote, with its mascot on the front screen and the analysis view on a monitor beside it" width="1600" height="900" loading="lazy" />
+            <div className="shot">
+              <HalftoneReveal src="/gallery/robot-front.webp" mode="mono" shape="dot" cellSize={6} angle={45} inkColor="#e6eaf0" paperColor="#0b0d12" revealRadius={160} />
+            </div>
             <div className="feature-body">
               <span className="kicker">WRO Future Innovators · Senior · Los Tres Mosqueteros</span>
               <h3>BALBOITA</h3>
@@ -114,6 +123,10 @@ export default function App() {
             </div>
           </SpotlightCard>
 
+          <div className="gallery">
+            <AccordionGallery items={GALLERY} defaultIndex={2} expandRatio={0.52} trigger="hover" />
+          </div>
+
           <div className="list">
             {SIDE_PROJECTS.map(p => (
               <article className="item" key={p.title}>
@@ -127,14 +140,14 @@ export default function App() {
 
         <section aria-labelledby="ach">
           <h2 id="ach">Achievements</h2>
-          <p className="cmd">last fer</p>
+          <p className="cmd">last {ME.handle}</p>
           <div className="log">
             <table>
               <thead><tr><th>user</th><th>event</th><th>result</th><th>date</th></tr></thead>
               <tbody>
                 {LOG.map(r => (
                   <tr key={r.event}>
-                    <td>fer</td>
+                    <td>{ME.handle}</td>
                     <td>{r.event}</td>
                     <td className={r.rank ? 'rank' : ''}>{r.result}</td>
                     <td>{r.date}</td>
@@ -145,22 +158,33 @@ export default function App() {
           </div>
         </section>
 
+        <section aria-labelledby="stack">
+          <h2 id="stack">Stack</h2>
+          <p className="prose muted">Languages, hardware and the tools I ship with.</p>
+        </section>
+      </main>
+
+      <div className="drift">
+        <DriftWall items={TOOLS} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={42} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} overlayColor="#0b0d12" />
+      </div>
+
+      <main className="wrap content tail">
         <section aria-labelledby="about">
           <h2 id="about">About</h2>
           <p className="prose">
-            I study at Colegio Bilingüe de Panamá. Most of what I build sits where hardware meets code: sensors, microcontrollers, a Pi doing computer
-            vision, and the web app on top. I also like the business side, turning a build into something people would actually pay for.
+            {ME.age}, software engineer, based in Panama. Most of what I build sits where hardware meets code: sensors, microcontrollers, a Pi doing
+            computer vision, and the web app on top. I also like the business side, turning a build into something people would actually pay for.
           </p>
         </section>
 
         <section id="contact" aria-labelledby="ct">
           <h2 id="ct">Contact</h2>
           <p className="mono">
-            DM <a href={LINKS.instagram} target="_blank" rel="noreferrer">@utmpx</a> · email: <span className="sel">{LINKS.email}</span>
+            <span className="sel">{LINKS.email}</span> · DM <a href={LINKS.instagram} target="_blank" rel="noreferrer">@utmpx</a>
           </p>
         </section>
 
-        <footer><span>nyras.dev</span><span>© 2026 Fer González</span></footer>
+        <footer><span>nyras.dev</span><span>© 2026 {ME.handle}</span></footer>
       </main>
 
       <nav className="dock-wrap" aria-label="Links">

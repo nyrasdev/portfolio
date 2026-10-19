@@ -48,14 +48,18 @@ h1 .enc { color: var(--accent); font-family: var(--mono); font-weight: 400; }
 .tag { font-size: 1.15rem; color: var(--muted); max-width: 34rem; margin: 1rem 0 0; }
 
 /* content */
-.content { display: flex; flex-direction: column; gap: 3.5rem; padding-block: 3.5rem 9rem; }
+.content { display: flex; flex-direction: column; gap: 3.5rem; padding-block: 3.5rem 2rem; }
+.content.tail { padding-block: 2rem 9rem; }
 section { display: flex; flex-direction: column; gap: 1.25rem; }
 h2 { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
   display: flex; align-items: center; gap: 0.75rem; }
 h2::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 
 .feature { padding: 0 !important; overflow: hidden; border-radius: 12px; }
-.shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--line); background: var(--surface); }
+.shot { position: relative; width: 100%; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--bg); }
+.gallery { position: relative; height: clamp(260px, 50vw, 420px); border-radius: 12px; overflow: hidden; }
+.drift { position: relative; height: 600px; margin-top: -1.5rem; }
+.tag b { color: var(--fg); font-weight: 500; }
 .feature-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; position: relative; }
 .feature h3 { font-size: 1.9rem; letter-spacing: -0.01em; }
 .feature p { margin: 0; max-width: 62ch; }
