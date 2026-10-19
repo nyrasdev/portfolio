@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="264" viewBox="0 0 400 264">
-<rect width="400" height="264" fill="#12161d"/>
-<rect x="0.5" y="0.5" width="399" height="263" fill="none" stroke="#232a35"/>
-<text x="28" y="48" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8a94a3" letter-spacing="2">LANGUAGE</text>
-<text x="28" y="160" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="700" font-size="36" fill="#e6eaf0">JavaScript</text>
-<rect x="28" y="196" width="40" height="4" rx="2" fill="#a5d8ff"/>
+<rect width="400" height="264" fill="#141414"/>
+<rect x="0.5" y="0.5" width="399" height="263" fill="none" stroke="#262626"/>
+<text x="28" y="48" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8c8c8c" letter-spacing="2">LANGUAGE</text>
+<text x="28" y="160" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="700" font-size="36" fill="#f2f2f2">JavaScript</text>
+<rect x="28" y="196" width="40" height="4" rx="2" fill="#d4d4d4"/>
 </svg>

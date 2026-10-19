@@ -77,9 +77,9 @@ export default function App() {
     <>
       <header className="hero">
         <div className="hero-ascii" aria-hidden="true">
-          <GradientASCII colors={['#1e3fd8', '#f6f8ff', '#a5d8ff', '#38bdf8']} shape="horizon" characters=" =+xX0S8#@" cellSize={18} density={0.8} />
+          <GradientASCII colors={['#1f1f1f', '#f5f5f5', '#a3a3a3', '#525252']} shape="horizon" characters=" =+xX0S8#@" cellSize={18} density={0.8} />
         </div>
-        <SwarmCursor count={800} size={2.6} spread={90} swirl={0.6} clickEffect="burst" color="#a5d8ff" accentColor="#7d9bff">
+        <SwarmCursor count={800} size={2.6} spread={90} swirl={0.6} clickEffect="burst" color="#e5e5e5" accentColor="#8a8a8a">
           <div className="hero-grid">
             <div className="hero-top">
               <p className="record">
@@ -109,7 +109,7 @@ export default function App() {
           </div>
         </SwarmCursor>
         <div className="hero-badge">
-          <Lanyard frontImage="/lanyard/card-front.png" backImage="/lanyard/card-back.png" strapImage="/lanyard/band.png" strapColor="#0e121a" metal="silver" />
+          <Lanyard frontImage="/lanyard/card-front.png" backImage="/lanyard/card-back.png" strapImage="/lanyard/band.png" strapColor="#111111" metal="silver" />
         </div>
       </header>
 
@@ -117,7 +117,7 @@ export default function App() {
         <Section id="work" path="work">
           <article className="feature">
             <div className="feature-img">
-              <HalftoneReveal src="/gallery/robot-front.webp" mode="mono" shape="dot" cellSize={6} angle={45} inkColor="#e6eaf0" paperColor="#0b0d12" revealRadius={160} />
+              <HalftoneReveal src="/gallery/robot-front.webp" mode="mono" shape="dot" cellSize={6} angle={45} inkColor="#f2f2f2" paperColor="#0a0a0a" revealRadius={160} />
               <span className="hint">hover to develop</span>
             </div>
             <div className="feature-text">
@@ -174,7 +174,7 @@ export default function App() {
           <h2 id="stack-h" className="path"><span>~/</span>stack</h2>
           <p>Languages, hardware and the tools I ship with.</p>
         </div>
-        <DriftWall items={TOOLS} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={42} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} overlayColor="#0b0d12" />
+        <DriftWall items={TOOLS} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={42} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} overlayColor="#0a0a0a" />
       </section>
 
       <main>
@@ -186,7 +186,7 @@ export default function App() {
       </main>
 
       <nav className="dock-wrap" aria-label="Links">
-        <Dock items={dockItems} theme="dark" accentColor="#7d9bff" baseItemSize={46} magnification={64} panelHeight={64} showBadges={false} />
+        <Dock items={dockItems} theme="dark" accentColor="#d4d4d4" baseItemSize={46} magnification={64} panelHeight={64} showBadges={false} />
       </nav>
     </>
   );
