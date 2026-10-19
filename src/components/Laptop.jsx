@@ -1,36 +1,46 @@
 // Scroll-driven laptop: the lid opens as you scroll through the section.
-// Model (mac.glb) from shahdinsalman23/react-macbookpro (MIT); screen shows the BALBOITA interface.
+// Model (mac.glb) from shahdinsalman23/react-macbookpro (MIT).
+// The screen plays a pre-recorded scroll-through of the BALBOITA site as a video texture
+// (much lighter than a live iframe), and only while the section is on screen.
 import { Suspense, useEffect, useMemo, useRef } from 'react';
-import { Canvas, useFrame, createPortal } from '@react-three/fiber';
-import { Environment, Html, Lightformer, useGLTF, useTexture } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Environment, Lightformer, useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
-function Model({ progress, site }) {
+function Model({ progress, video }) {
   const { scene } = useGLTF('/mac.glb');
-  const tex = useTexture('/mac-screen.jpg');
+  const poster = useTexture('/mac-screen.jpg');
   const meshes = useMemo(() => {
     const m = {};
     scene.traverse(o => { m[o.name] = o; });
     return m;
   }, [scene]);
 
+  const videoTex = useMemo(() => {
+    if (!video) return null;
+    const t = new THREE.VideoTexture(video);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }, [video]);
+
   useEffect(() => {
-    if (meshes.matte?.material) {
-      tex.colorSpace = THREE.SRGBColorSpace;
-      meshes.matte.material.map = tex;
-      meshes.matte.material.emissiveIntensity = 0;
-      meshes.matte.material.metalness = 0;
-      meshes.matte.material.roughness = 1;
-      meshes.matte.material.needsUpdate = true;
+    const mat = meshes.matte?.material;
+    if (mat) {
+      poster.colorSpace = THREE.SRGBColorSpace;
+      mat.map = videoTex || poster;
+      mat.emissive = new THREE.Color('#ffffff');
+      mat.emissiveMap = mat.map;
+      mat.emissiveIntensity = 0.85;
+      mat.metalness = 0;
+      mat.roughness = 1;
+      mat.needsUpdate = true;
     }
     if (meshes.screen) meshes.screen.rotation.x = THREE.MathUtils.degToRad(180);
-  }, [meshes, tex]);
+  }, [meshes, poster, videoTex]);
 
   const group = useRef();
-  const live = useRef(null);
   useFrame(() => {
     const p = progress.current;
-    if (live.current) live.current.style.opacity = String(Math.min(1, Math.max(0, (p - 0.45) / 0.3)));
     if (meshes.screen) {
       const target = THREE.MathUtils.degToRad(180 - p * 90);
       meshes.screen.rotation.x = THREE.MathUtils.lerp(meshes.screen.rotation.x, target, 0.12);
@@ -41,21 +51,24 @@ function Model({ progress, site }) {
   return (
     <group ref={group} position={[0, -10, 20]}>
       <primitive object={scene} />
-      {site && meshes.screen && createPortal(
-        <Html transform position={[0, -0.53, -11.52]} rotation={[-Math.PI / 2, 0, 0]} zIndexRange={[5, 0]} style={{ pointerEvents: 'none' }}>
-          <div ref={live} className="laptop-live" style={{ opacity: 0 }}>
-            <iframe src={site} title="BALBOITA website, live" loading="lazy" tabIndex={-1} />
-          </div>
-        </Html>,
-        meshes.screen
-      )}
     </group>
   );
 }
 
-export default function Laptop({ children, site }) {
+export default function Laptop({ children, videoSrc }) {
   const wrap = useRef(null);
   const progress = useRef(0);
+  const video = useMemo(() => {
+    if (!videoSrc || typeof document === 'undefined') return null;
+    const v = document.createElement('video');
+    v.src = videoSrc;
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.preload = 'metadata';
+    v.crossOrigin = 'anonymous';
+    return v;
+  }, [videoSrc]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -71,19 +84,30 @@ export default function Laptop({ children, site }) {
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
   }, []);
 
+  // play the video only while the section is visible
+  useEffect(() => {
+    if (!video || !wrap.current) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    }, { threshold: 0.05 });
+    io.observe(wrap.current);
+    return () => { io.disconnect(); video.pause(); };
+  }, [video]);
+
   return (
     <div ref={wrap} className="laptop">
       <div className="laptop-stage">
         <div className="laptop-copy">{children}</div>
-        <Canvas className="laptop-canvas" camera={{ fov: 12, position: [0, -10, 220] }} dpr={[1, 2]}>
+        <Canvas className="laptop-canvas" camera={{ fov: 12, position: [0, -10, 220] }} dpr={[1, 1.5]}>
           <Suspense fallback={null}>
-            <Environment resolution={256}>
+            <Environment resolution={128}>
               <Lightformer intensity={2} position={[0, 5, -9]} scale={[10, 10, 1]} />
               <Lightformer intensity={1.5} position={[-5, 1, -1]} rotation-y={Math.PI / 2} scale={[20, 2, 1]} />
               <Lightformer intensity={1.5} position={[5, 1, 1]} rotation-y={-Math.PI / 2} scale={[20, 2, 1]} />
               <Lightformer intensity={3} position={[0, 0, 10]} scale={[10, 4, 1]} />
             </Environment>
-            <Model progress={progress} site={site} />
+            <Model progress={progress} video={video} />
           </Suspense>
         </Canvas>
       </div>

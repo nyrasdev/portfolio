@@ -2,6 +2,7 @@
 <rect width="400" height="264" fill="#141414"/>
 <rect x="0.5" y="0.5" width="399" height="263" fill="none" stroke="#262626"/>
 <text x="28" y="48" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8c8c8c" letter-spacing="2">BUILD TOOL</text>
-<text x="28" y="160" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="700" font-size="44" fill="#f2f2f2">Vite</text>
-<rect x="28" y="196" width="40" height="4" rx="2" fill="#d4d4d4"/>
+<g transform="translate(316 28) scale(2.3)"><path d="M13.056 23.238a.57.57 0 0 1-1.02-.355v-5.202c0-.63-.512-1.143-1.144-1.143H5.148a.57.57 0 0 1-.464-.903l3.777-5.29c.54-.753 0-1.804-.93-1.804H.57a.574.574 0 0 1-.543-.746.6.6 0 0 1 .08-.157L5.008.78a.57.57 0 0 1 .467-.24h14.589a.57.57 0 0 1 .466.903l-3.778 5.29c-.54.755 0 1.806.93 1.806h5.745c.238 0 .424.138.513.322a.56.56 0 0 1-.063.603z" fill="#d4d4d4"/></g>
+<text x="28" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="700" font-size="44" fill="#f2f2f2">Vite</text>
+<rect x="28" y="222" width="40" height="4" rx="2" fill="#d4d4d4"/>
 </svg>

@@ -2,6 +2,7 @@
 <rect width="400" height="264" fill="#141414"/>
 <rect x="0.5" y="0.5" width="399" height="263" fill="none" stroke="#262626"/>
 <text x="28" y="48" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8c8c8c" letter-spacing="2">LANGUAGE</text>
-<text x="28" y="160" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="700" font-size="36" fill="#f2f2f2">HTML / CSS</text>
-<rect x="28" y="196" width="40" height="4" rx="2" fill="#d4d4d4"/>
+<g transform="translate(316 28) scale(2.3)"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" fill="#d4d4d4"/></g>
+<text x="28" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="700" font-size="36" fill="#f2f2f2">HTML / CSS</text>
+<rect x="28" y="222" width="40" height="4" rx="2" fill="#d4d4d4"/>
 </svg>
