@@ -42,7 +42,7 @@ function Model({ progress, site }) {
     <group ref={group} position={[0, -10, 20]}>
       <primitive object={scene} />
       {site && meshes.screen && createPortal(
-        <Html transform position={[0, -0.53, -11.52]} rotation={[Math.PI / 2, 0, Math.PI]} zIndexRange={[5, 0]} style={{ pointerEvents: 'none' }}>
+        <Html transform position={[0, -0.53, -11.52]} rotation={[-Math.PI / 2, 0, 0]} zIndexRange={[5, 0]} style={{ pointerEvents: 'none' }}>
           <div ref={live} className="laptop-live" style={{ opacity: 0 }}>
             <iframe src={site} title="BALBOITA website, live" loading="lazy" tabIndex={-1} />
           </div>
