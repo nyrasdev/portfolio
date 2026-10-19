@@ -8,6 +8,8 @@ import Dock from './components/Dock';
 import Lanyard from './components/Lanyard';
 import ScrollExpand from './components/ScrollExpand';
 import Topography from './components/Topography';
+import LogoLoop from './components/LogoLoop';
+import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact, SiVite, SiOpencv, SiTensorflow, SiRaspberrypi, SiEspressif, SiArduino, SiGithub, SiClaude, SiVercel, SiLinux } from 'react-icons/si';
 
 // ---- Edit your content here ----
 const ME = { handle: 'fer', age: 16, role: 'Software engineer', place: 'Panamá' };
@@ -47,6 +49,16 @@ const LOG = [
 const PROJECTS = [
   { kicker: 'B2B SaaS · Beta', title: 'MesaFlow', text: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.' },
 ];
+const TECH = [
+  [SiPython, 'Python', 'https://www.python.org'], [SiJavascript, 'JavaScript', 'https://developer.mozilla.org/docs/Web/JavaScript'],
+  [SiCplusplus, 'C++', 'https://isocpp.org'], [SiHtml5, 'HTML', 'https://developer.mozilla.org/docs/Web/HTML'],
+  [SiCss, 'CSS', 'https://developer.mozilla.org/docs/Web/CSS'], [SiSqlite, 'SQLite', 'https://sqlite.org'],
+  [SiReact, 'React', 'https://react.dev'], [SiVite, 'Vite', 'https://vite.dev'], [SiOpencv, 'OpenCV', 'https://opencv.org'],
+  [SiTensorflow, 'TensorFlow Lite', 'https://www.tensorflow.org/lite'], [SiRaspberrypi, 'Raspberry Pi', 'https://www.raspberrypi.com'],
+  [SiEspressif, 'ESP32', 'https://www.espressif.com'], [SiArduino, 'Arduino', 'https://www.arduino.cc'],
+  [SiGithub, 'GitHub', 'https://github.com/nyrasdev'], [SiClaude, 'Claude Code', 'https://claude.com/claude-code'],
+  [SiVercel, 'Vercel', 'https://vercel.com'], [SiLinux, 'Linux', 'https://kernel.org'],
+].map(([Icon, title, href]) => ({ node: <Icon />, title, href }));
 // --------------------------------
 
 const Icon = ({ d }) => (
@@ -79,7 +91,7 @@ export default function App() {
     <>
       <header className="hero">
         <div className="hero-ascii" aria-hidden="true">
-          <GradientASCII colors={['#1f1f1f', '#f5f5f5', '#a3a3a3', '#525252']} shape="horizon" characters=" =+xX0S8#@" cellSize={18} density={0.8} />
+          <GradientASCII colors={['#5a5a5a', '#ffffff', '#cfcfcf', '#8a8a8a']} shape="horizon" characters=" =+xX0S8#@" cellSize={18} density={0.8} />
         </div>
         <SwarmCursor count={800} size={2.6} spread={90} swirl={0.6} clickEffect="burst" color="#e5e5e5" accentColor="#8a8a8a">
           <div className="hero-grid">
@@ -185,6 +197,10 @@ export default function App() {
         </div>
         <DriftWall items={TOOLS} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={42} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} overlayColor="#0a0a0a" />
       </section>
+
+      <div className="logo-band">
+        <LogoLoop logos={TECH} speed={80} direction="left" logoHeight={40} gap={64} hoverSpeed={0} scaleOnHover ariaLabel="Languages and tools" />
+      </div>
 
       <main>
         <div className="contact-wrap">

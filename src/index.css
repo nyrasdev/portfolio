@@ -140,3 +140,8 @@ footer { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); disp
 .contact-topo::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, var(--bg) 0%, transparent 30%, transparent 55%, var(--bg) 100%); }
 .contact-sec { position: relative; z-index: 1; width: 100%; padding-left: var(--gutter-l); padding-right: var(--gutter-r); border-bottom: 0; pointer-events: none; }
 .contact-sec a, .contact-sec .sel { pointer-events: auto; }
+
+/* logo strip under the stack wall */
+.logo-band { position: relative; height: 140px; display: flex; align-items: center; overflow: hidden; border-bottom: 1px solid var(--line); color: var(--muted); }
+.logo-band a { color: inherit; }
+.logo-band a:hover { color: var(--fg); }
