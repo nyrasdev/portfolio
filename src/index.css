@@ -178,3 +178,12 @@ footer { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); disp
   .laptop-copy { position: relative; top: auto; mix-blend-mode: normal; padding-top: 10vh; flex: none; }
   .laptop-canvas { position: relative !important; inset: auto; flex: 1 1 0; min-height: 0; height: auto !important; }
 }
+
+/* language toggle */
+.hero-top { gap: 1.25rem; }
+.lang-btn { margin-left: auto; font-family: var(--mono); font-size: 0.8rem; color: var(--muted); background: transparent; border: 1px solid var(--line);
+  padding: 0.3rem 0.6rem; cursor: pointer; border-radius: 999px; }
+.lang-btn:hover { border-color: var(--fg); color: var(--fg); }
+.lang-btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.lang-btn .on { color: var(--fg); }
+@media (max-width: 640px) { .lang-btn { margin-left: 0; } }

@@ -10,10 +10,11 @@ import ScrollExpand from './components/ScrollExpand';
 import Topography from './components/Topography';
 import LogoLoop from './components/LogoLoop';
 import Laptop from './components/Laptop';
+import { useEffect, useState } from 'react';
 import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact, SiVite, SiOpencv, SiTensorflow, SiRaspberrypi, SiEspressif, SiArduino, SiGithub, SiClaude, SiVercel, SiLinux, SiGnu, SiNixos, SiDocker, SiGnubash } from 'react-icons/si';
 
 // ---- Edit your content here ----
-const ME = { handle: 'fer', age: 16, role: 'Software & UI/UX engineer', place: 'Panamá' };
+const ME = { handle: 'fer', age: 16, place: 'Panamá' };
 
 const LINKS = {
   instagram: 'https://instagram.com/utmpx',
@@ -37,19 +38,12 @@ const TOOLS = [
   'raspberry-pi', 'esp32', 'github', 'claude-code', 'codex', 'vs-code', 'vercel', 'linux', 'gnu', 'unix', 'nixos', 'nix', 'docker', 'bash',
 ].map(slug => ({ image: `/stack/${slug}.svg`, title: slug.replace(/-/g, ' ') }));
 
-const PODIUM = [
-  { rank: '3rd', event: 'WRO Open Championship Europe', where: 'Zagreb, Croatia', date: 'Oct 2026' },
-  { rank: '2nd', event: 'WRO Panamá National', where: 'Future Innovators · Senior', date: '2026' },
-];
 
 const LOG = [
   { event: 'WRO Regional #2', result: '89.17 / 200' },
   { event: 'WRO Regional #1', result: '104.17 / 200' },
 ];
 
-const PROJECTS = [
-  { kicker: 'B2B SaaS · Beta', title: 'MesaFlow', text: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.' },
-];
 const TECH = [
   [SiPython, 'Python', 'https://www.python.org'], [SiJavascript, 'JavaScript', 'https://developer.mozilla.org/docs/Web/JavaScript'],
   [SiCplusplus, 'C++', 'https://isocpp.org'], [SiHtml5, 'HTML', 'https://developer.mozilla.org/docs/Web/HTML'],
@@ -61,6 +55,36 @@ const TECH = [
   [SiVercel, 'Vercel', 'https://vercel.com'], [SiLinux, 'Linux', 'https://kernel.org'],
   [SiGnu, 'GNU', 'https://www.gnu.org'], [SiNixos, 'NixOS', 'https://nixos.org'], [SiDocker, 'Docker', 'https://www.docker.com'], [SiGnubash, 'Bash', 'https://www.gnu.org/software/bash/'],
 ].map(([Icon, title, href]) => ({ node: <Icon />, title, href }));
+
+// ---- Copy in both languages (EN / ES) ----
+const T = {
+  en: {
+    role: 'Software & UI/UX engineer', age: 'age', roleL: 'role', host: 'host', best: 'best', bestV: '3rd · WRO Europe',
+    revealH: '3rd in Europe.', revealP: "A coin-reading robot we took from Panamá's regionals to the WRO Open Championship in Zagreb.", scroll: 'scroll',
+    swH: 'The other half is code.', swP: "That's the BALBOITA website, which I built completely by myself: design, UI/UX and code, start to finish.", swLink: 'open balboita.vercel.app ↗',
+    hint: 'hover to develop', kicker: 'WRO Future Innovators · Senior',
+    lede: 'A robot that reads coins and bills and turns each one into a short lesson about where it came from.',
+    body: "A Raspberry Pi 5 runs the vision model, an ESP32 handles wireless, and a load cell plus ultrasonic sensor confirm what's been placed and weigh it. Built with my team, Los Tres Mosqueteros. The website I built completely on my own.",
+    gallery: ['The build', 'Scanning', 'Live demo', 'Bill result', 'Coin result'],
+    mesaK: 'B2B SaaS · Beta', mesaT: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.',
+    p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croatia', p1d: 'Oct 2026', p2: 'WRO Panamá National', p2d: '2026', r1: '3rd', r2: '2nd',
+    stackP: 'Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker) and the tools I ship with.',
+    dm: 'or DM', onIg: 'on Instagram.', contact: 'Contact', lang: 'ES', langLabel: 'Ver en español',
+  },
+  es: {
+    role: 'Ingeniero de software y UI/UX', age: 'edad', roleL: 'rol', host: 'desde', best: 'mejor', bestV: '3.º · WRO Europa',
+    revealH: '3.º en Europa.', revealP: 'Un robot que lee monedas y que llevamos desde las regionales de Panamá hasta el WRO Open Championship en Zagreb.', scroll: 'desliza',
+    swH: 'La otra mitad es código.', swP: 'Esa es la web de BALBOITA, que hice completamente yo solo: diseño, UI/UX y código, de principio a fin.', swLink: 'abrir balboita.vercel.app ↗',
+    hint: 'pasa el cursor para revelar', kicker: 'WRO Future Innovators · Senior',
+    lede: 'Un robot que lee monedas y billetes y convierte cada uno en una lección corta sobre su origen.',
+    body: 'Una Raspberry Pi 5 corre el modelo de visión, un ESP32 maneja la conexión inalámbrica, y una celda de carga con un sensor ultrasónico confirman qué se colocó y lo pesan. Hecho con mi equipo, Los Tres Mosqueteros. La web la hice completamente yo solo.',
+    gallery: ['El armado', 'Escaneando', 'Demo en vivo', 'Resultado billete', 'Resultado moneda'],
+    mesaK: 'SaaS B2B · Beta', mesaT: 'Control de pedidos para micro restaurantes y pequeñas tiendas, hecho para que su contabilidad sea más rápida y fácil. En beta, ahora mismo en pruebas con un micro restaurante.',
+    p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croacia', p1d: 'oct 2026', p2: 'WRO Nacional Panamá', p2d: '2026', r1: '3.º', r2: '2.º',
+    stackP: 'Lenguajes, hardware, el lado Unix (GNU, NixOS, Nix, Docker) y las herramientas con las que trabajo.',
+    dm: 'o escríbeme por', onIg: 'en Instagram.', contact: 'Contacto', lang: 'EN', langLabel: 'View in English',
+  },
+};
 // --------------------------------
 
 const Icon = ({ d }) => (
@@ -82,11 +106,23 @@ const Section = ({ id, path, children, className = '' }) => (
 );
 
 export default function App() {
+  const [lang, setLang] = useState(() => {
+    try { const v = localStorage.getItem('lang'); if (v === 'es' || v === 'en') return v; } catch {}
+    return typeof navigator !== 'undefined' && navigator.language?.startsWith('es') ? 'es' : 'en';
+  });
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('lang', lang); } catch {}
+  }, [lang]);
+  const t = T[lang];
+  const toggleLang = () => setLang(l => (l === 'en' ? 'es' : 'en'));
+  const gallery = GALLERY.map((g, i) => ({ ...g, label: t.gallery[i] }));
+
   const dockItems = [
     { icon: icons.ig, label: 'Instagram', onClick: open(LINKS.instagram) },
     { icon: icons.gh, label: 'GitHub', onClick: open(LINKS.github) },
     { icon: icons.bot, label: 'BALBOITA', onClick: open(LINKS.balboita) },
-    { icon: icons.mail, label: 'Contact', onClick: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
+    { icon: icons.mail, label: t.contact, onClick: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
   ];
 
   return (
@@ -103,6 +139,9 @@ export default function App() {
                 <span>ut_line=<b>pts/0</b></span>
                 <span className="live">USER_PROCESS</span>
               </p>
+              <button type="button" className="lang-btn" onClick={toggleLang} aria-label={t.langLabel} title={t.langLabel}>
+                <span className={lang === 'en' ? 'on' : ''}>EN</span>/<span className={lang === 'es' ? 'on' : ''}>ES</span>
+              </button>
               <nav className="topnav" aria-label="Sections">
                 <a href="#work">work</a>
                 <a href="#record">record</a>
@@ -113,10 +152,10 @@ export default function App() {
 
             <div className="hero-bottom">
               <dl className="meta">
-                <div><dt>role</dt><dd>{ME.role}</dd></div>
-                <div><dt>age</dt><dd>{ME.age}</dd></div>
-                <div><dt>host</dt><dd>{ME.place}</dd></div>
-                <div><dt>best</dt><dd>3rd · WRO Europe</dd></div>
+                <div><dt>{t.roleL}</dt><dd>{t.role}</dd></div>
+                <div><dt>{t.age}</dt><dd>{ME.age}</dd></div>
+                <div><dt>{t.host}</dt><dd>{ME.place}</dd></div>
+                <div><dt>{t.best}</dt><dd>{t.bestV}</dd></div>
               </dl>
               <h1 className="wordmark">
                 <DecryptedText text={ME.handle} animateOn="view" sequential revealDirection="start" speed={70} characters="01#$%&*<>/\\|_" encryptedClassName="enc" />
@@ -130,17 +169,17 @@ export default function App() {
       </header>
 
       <div className="reveal">
-        <ScrollExpand src="/gallery/robot-front.webp" alt="BALBOITA scanning a banknote" title="BALBOITA" scrollHint="scroll" useWindowScroll>
-          <h2>3rd in Europe.</h2>
-          <p>A coin-reading robot we took from Panamá's regionals to the WRO Open Championship in Zagreb.</p>
+        <ScrollExpand src="/gallery/robot-front.webp" alt="BALBOITA scanning a banknote" title="BALBOITA" scrollHint={t.scroll} useWindowScroll>
+          <h2>{t.revealH}</h2>
+          <p>{t.revealP}</p>
         </ScrollExpand>
       </div>
 
       <Laptop>
         <p className="path"><span>~/</span>software</p>
-        <h2>The other half is code.</h2>
-        <p className="muted">That's the BALBOITA website, which I built completely by myself: design, UI/UX and code, start to finish.</p>
-        <a className="laptop-link" href={LINKS.balboita} target="_blank" rel="noreferrer">open balboita.vercel.app ↗</a>
+        <h2>{t.swH}</h2>
+        <p className="muted">{t.swP}</p>
+        <a className="laptop-link" href={LINKS.balboita} target="_blank" rel="noreferrer">{t.swLink}</a>
       </Laptop>
 
       <main>
@@ -148,39 +187,37 @@ export default function App() {
           <article className="feature">
             <div className="feature-img">
               <HalftoneReveal src="/gallery/robot-front.webp" mode="mono" shape="dot" cellSize={6} angle={45} inkColor="#f2f2f2" paperColor="#0a0a0a" revealRadius={160} />
-              <span className="hint">hover to develop</span>
+              <span className="hint">{t.hint}</span>
             </div>
             <div className="feature-text">
-              <p className="kicker">WRO Future Innovators · Senior</p>
+              <p className="kicker">{t.kicker}</p>
               <h3>BALBOITA</h3>
-              <p className="lede">A robot that reads coins and bills and turns each one into a short lesson about where it came from.</p>
-              <p className="body">
-                A Raspberry Pi 5 runs the vision model, an ESP32 handles wireless, and a load cell plus ultrasonic sensor confirm what's been placed and weigh it.
-                Built with my team, Los Tres Mosqueteros. The website I built completely on my own.
-              </p>
+              <p className="lede">{t.lede}</p>
+              <p className="body">{t.body}</p>
               <ul className="chips" aria-label="Stack">{STACK.map(s => <li key={s}>{s}</li>)}</ul>
               <a className="more" href={LINKS.balboita} target="_blank" rel="noreferrer">balboita.vercel.app ↗</a>
             </div>
           </article>
 
           <div className="gallery">
-            <AccordionGallery items={GALLERY} defaultIndex={2} expandRatio={0.52} trigger="hover" />
+            <AccordionGallery key={lang} items={gallery} defaultIndex={2} expandRatio={0.52} trigger="hover" />
           </div>
 
           <div className="side">
-            {PROJECTS.map(p => (
-              <article className="side-item" key={p.title}>
-                <p className="kicker">{p.kicker}</p>
-                <h3>{p.title}</h3>
-                <p>{p.text}</p>
-              </article>
-            ))}
+            <article className="side-item">
+              <p className="kicker">{t.mesaK}</p>
+              <h3>MesaFlow</h3>
+              <p>{t.mesaT}</p>
+            </article>
           </div>
         </Section>
 
         <Section id="record" path="record">
           <div className="podium">
-            {PODIUM.map(p => (
+            {[
+              { rank: t.r1, event: t.p1, where: t.p1w, date: t.p1d },
+              { rank: t.r2, event: t.p2, where: 'Future Innovators · Senior', date: t.p2d },
+            ].map(p => (
               <div className="place" key={p.event}>
                 <span className="rank">{p.rank}</span>
                 <div>
@@ -202,7 +239,7 @@ export default function App() {
       <section id="stack" className="stack" aria-labelledby="stack-h">
         <div className="stack-label">
           <h2 id="stack-h" className="path"><span>~/</span>stack</h2>
-          <p>Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker) and the tools I ship with.</p>
+          <p>{t.stackP}</p>
         </div>
         <DriftWall items={TOOLS} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={42} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} overlayColor="#0a0a0a" />
       </section>
@@ -218,7 +255,7 @@ export default function App() {
           </div>
           <Section id="contact" path="contact" className="contact-sec">
             <p className="big-mail"><span className="sel">{LINKS.email}</span></p>
-            <p className="muted">or DM <a href={LINKS.instagram} target="_blank" rel="noreferrer">@utmpx</a> on Instagram.</p>
+            <p className="muted">{t.dm} <a href={LINKS.instagram} target="_blank" rel="noreferrer">@utmpx</a> {t.onIg}</p>
           </Section>
         </div>
         <footer><span>nyras.dev</span><span>© 2026 {ME.handle}</span></footer>
