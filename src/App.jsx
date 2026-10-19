@@ -8,7 +8,7 @@ import Dock from './components/Dock';
 import Lanyard from './components/Lanyard';
 
 // ---- Edit your content here ----
-const ME = { handle: 'nyras', age: 16, role: 'Software engineer', place: 'Panamá' };
+const ME = { handle: 'fer', age: 16, role: 'Software engineer', place: 'Panamá' };
 
 const LINKS = {
   instagram: 'https://instagram.com/utmpx',
