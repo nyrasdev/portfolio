@@ -7,6 +7,7 @@ import DriftWall from './components/DriftWall';
 import Dock from './components/Dock';
 import Lanyard from './components/Lanyard';
 import ScrollExpand from './components/ScrollExpand';
+import Topography from './components/Topography';
 
 // ---- Edit your content here ----
 const ME = { handle: 'fer', age: 16, role: 'Software engineer', place: 'Panamá' };
@@ -186,10 +187,15 @@ export default function App() {
       </section>
 
       <main>
-        <Section id="contact" path="contact">
-          <p className="big-mail"><span className="sel">{LINKS.email}</span></p>
-          <p className="muted">or DM <a href={LINKS.instagram} target="_blank" rel="noreferrer">@utmpx</a> on Instagram.</p>
-        </Section>
+        <div className="contact-wrap">
+          <div className="contact-topo" aria-hidden="true">
+            <Topography color="#d4d4d4" lineCount={22} lineWidth={1.2} elevation={1} foreground={0.2} tilt={32} speed={0.25} direction="forward" glow={0.6} depthOfField={0.4} fog={0.35} hoverEffect="lift" clickEffect="pulse" />
+          </div>
+          <Section id="contact" path="contact" className="contact-sec">
+            <p className="big-mail"><span className="sel">{LINKS.email}</span></p>
+            <p className="muted">or DM <a href={LINKS.instagram} target="_blank" rel="noreferrer">@utmpx</a> on Instagram.</p>
+          </Section>
+        </div>
         <footer><span>nyras.dev</span><span>© 2026 {ME.handle}</span></footer>
       </main>
 

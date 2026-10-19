@@ -133,3 +133,10 @@ footer { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); disp
 .reveal img, .reveal video { filter: grayscale(1) contrast(1.05); }
 .reveal h2 { font-family: var(--display); font-weight: 800; font-stretch: 75%; font-variation-settings: 'wdth' 75; font-size: clamp(2.5rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.03em; }
 .reveal p { font-family: var(--body); max-width: 40ch; }
+
+/* contact sits on a full-bleed topography field */
+.contact-wrap { position: relative; margin-left: calc(-1 * var(--gutter-l)); margin-right: calc(-1 * var(--gutter-r)); min-height: 600px; display: flex; align-items: flex-end; overflow: hidden; }
+.contact-topo { position: absolute; inset: 0; }
+.contact-topo::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, var(--bg) 0%, transparent 30%, transparent 55%, var(--bg) 100%); }
+.contact-sec { position: relative; z-index: 1; width: 100%; padding-left: var(--gutter-l); padding-right: var(--gutter-r); border-bottom: 0; pointer-events: none; }
+.contact-sec a, .contact-sec .sel { pointer-events: auto; }
