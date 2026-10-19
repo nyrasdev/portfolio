@@ -34,10 +34,10 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
 
 /* hero */
 .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-.hero-bg { position: absolute; inset: 0; opacity: 0.85; }
+.hero-bg { position: absolute; inset: 0; }
 .hero-fade { position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, transparent 30%, var(--bg) 100%), linear-gradient(90deg, rgba(11,13,18,.75) 0%, transparent 80%); }
-.hero-inner { position: relative; padding-block: 8rem 4rem; pointer-events: none; }
+  background: linear-gradient(180deg, transparent 55%, var(--bg) 100%), linear-gradient(90deg, rgba(11,13,18,.55) 0%, transparent 60%); }
+.hero-inner { position: relative; padding-block: 10rem 6rem; pointer-events: none; }
 .hero-inner a { pointer-events: auto; }
 .record { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 0; }
 .record b { color: var(--fg); font-weight: 500; }
