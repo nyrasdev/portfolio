@@ -33,7 +33,7 @@ const TOOLS = [
 
 const PODIUM = [
   { rank: '3rd', event: 'WRO Open Championship Europe', where: 'Zagreb, Croatia', date: 'Oct 2026' },
-  { rank: '1st', event: 'WRO Panamá National', where: 'Future Innovators · Senior', date: '2026' },
+  { rank: '2nd', event: 'WRO Panamá National', where: 'Future Innovators · Senior', date: '2026' },
 ];
 
 const LOG = [
