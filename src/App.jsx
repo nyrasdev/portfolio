@@ -8,7 +8,7 @@ const LINKS = {
   instagram: 'https://instagram.com/utmpx',
   github: 'https://github.com/nyrasdev',
   balboita: 'https://balboita.vercel.app',
-  email: 'you@nyras.dev', // TODO: your email
+  email: 'fer@nyras.dev',
 };
 
 const STACK = ['Raspberry Pi 5', 'ESP32', 'HuskyLens', 'HX711 load cell', 'TensorFlow Lite', 'OpenCV', 'Python', 'SQLite'];
@@ -99,7 +99,7 @@ export default function App() {
           <h2 id="work">Projects</h2>
 
           <SpotlightCard className="feature" theme="dark" spotlightColor="#7d9bff" intensity={0.18}>
-            <div className="shot">[ photo of BALBOITA ]</div>
+            <img className="shot" src="/balboita.webp" alt="BALBOITA scanning a banknote, with its mascot on the front screen and the analysis view on a monitor beside it" width="1600" height="900" loading="lazy" />
             <div className="feature-body">
               <span className="kicker">WRO Future Innovators · Senior · Los Tres Mosqueteros</span>
               <h3>BALBOITA</h3>
