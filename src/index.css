@@ -87,7 +87,8 @@ main { padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
 .side { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
 @media (max-width: 640px) { .side { grid-template-columns: 1fr; } }
 .side-item { display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
-.side-item h3 { font-size: 1.6rem; font-weight: 700; font-stretch: 85%; font-variation-settings: 'wdth' 85; }
+.side-item { border-top: 2px solid var(--fg); padding-top: 1rem; }
+.side-item h3 { font-size: clamp(2rem, 4vw, 3rem); line-height: 0.95; font-weight: 700; font-stretch: 85%; font-variation-settings: 'wdth' 85; }
 .side-item p:last-child { color: var(--muted); max-width: 48ch; }
 
 /* ---------- record ---------- */

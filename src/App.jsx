@@ -41,6 +41,9 @@ const LOG = [
   { event: 'WRO Regional #1', result: '104.17 / 200' },
 ];
 
+const PROJECTS = [
+  { kicker: 'B2B SaaS', title: 'MesaFlow', text: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier.' },
+];
 // --------------------------------
 
 const Icon = ({ d }) => (
@@ -128,6 +131,16 @@ export default function App() {
 
           <div className="gallery">
             <AccordionGallery items={GALLERY} defaultIndex={2} expandRatio={0.52} trigger="hover" />
+          </div>
+
+          <div className="side">
+            {PROJECTS.map(p => (
+              <article className="side-item" key={p.title}>
+                <p className="kicker">{p.kicker}</p>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </article>
+            ))}
           </div>
         </Section>
 
