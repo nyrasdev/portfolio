@@ -13,7 +13,7 @@ import Laptop from './components/Laptop';
 import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact, SiVite, SiOpencv, SiTensorflow, SiRaspberrypi, SiEspressif, SiArduino, SiGithub, SiClaude, SiVercel, SiLinux, SiGnu, SiNixos, SiDocker, SiGnubash } from 'react-icons/si';
 
 // ---- Edit your content here ----
-const ME = { handle: 'fer', age: 16, role: 'Software engineer', place: 'Panamá' };
+const ME = { handle: 'fer', age: 16, role: 'Software & UI/UX engineer', place: 'Panamá' };
 
 const LINKS = {
   instagram: 'https://instagram.com/utmpx',
