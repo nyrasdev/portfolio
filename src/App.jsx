@@ -42,7 +42,7 @@ const LOG = [
 ];
 
 const PROJECTS = [
-  { kicker: 'B2B SaaS', title: 'MesaFlow', text: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier.' },
+  { kicker: 'B2B SaaS · Beta', title: 'MesaFlow', text: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta with a micro restaurant testing it day to day.' },
 ];
 // --------------------------------
 
