@@ -6,6 +6,7 @@ import AccordionGallery from './components/AccordionGallery';
 import DriftWall from './components/DriftWall';
 import Dock from './components/Dock';
 import Lanyard from './components/Lanyard';
+import ScrollExpand from './components/ScrollExpand';
 
 // ---- Edit your content here ----
 const ME = { handle: 'fer', age: 16, role: 'Software engineer', place: 'Panamá' };
@@ -112,6 +113,13 @@ export default function App() {
           <Lanyard frontImage="/lanyard/card-front.png" backImage="/lanyard/card-back.png" strapImage="/lanyard/band.png" strapColor="#111111" metal="silver" />
         </div>
       </header>
+
+      <div className="reveal">
+        <ScrollExpand src="/gallery/robot-front.webp" alt="BALBOITA scanning a banknote" title="BALBOITA" scrollHint="scroll" useWindowScroll>
+          <h2>3rd in Europe.</h2>
+          <p>A coin-reading robot we took from Panamá's regionals to the WRO Open Championship in Zagreb.</p>
+        </ScrollExpand>
+      </div>
 
       <main>
         <Section id="work" path="work">
