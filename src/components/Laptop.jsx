@@ -24,16 +24,10 @@ function Model({ progress, video }) {
   }, [video]);
 
   useEffect(() => {
-    const mat = meshes.matte?.material;
-    if (mat) {
+    if (meshes.matte) {
       poster.colorSpace = THREE.SRGBColorSpace;
-      mat.map = videoTex || poster;
-      mat.emissive = new THREE.Color('#ffffff');
-      mat.emissiveMap = mat.map;
-      mat.emissiveIntensity = 0.85;
-      mat.metalness = 0;
-      mat.roughness = 1;
-      mat.needsUpdate = true;
+      // unlit material so the screen shows the site's real colors, not lit/washed out
+      meshes.matte.material = new THREE.MeshBasicMaterial({ map: videoTex || poster, toneMapped: false });
     }
     if (meshes.screen) meshes.screen.rotation.x = THREE.MathUtils.degToRad(180);
   }, [meshes, poster, videoTex]);
