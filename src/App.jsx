@@ -10,7 +10,7 @@ import ScrollExpand from './components/ScrollExpand';
 import Topography from './components/Topography';
 import LogoLoop from './components/LogoLoop';
 import Laptop from './components/Laptop';
-import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact, SiVite, SiOpencv, SiTensorflow, SiRaspberrypi, SiEspressif, SiArduino, SiGithub, SiClaude, SiVercel, SiLinux } from 'react-icons/si';
+import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact, SiVite, SiOpencv, SiTensorflow, SiRaspberrypi, SiEspressif, SiArduino, SiGithub, SiClaude, SiVercel, SiLinux, SiGnu, SiNixos, SiDocker, SiGnubash } from 'react-icons/si';
 
 // ---- Edit your content here ----
 const ME = { handle: 'fer', age: 16, role: 'Software engineer', place: 'Panamá' };
@@ -34,7 +34,7 @@ const GALLERY = [
 
 const TOOLS = [
   'python', 'javascript', 'c', 'html-css', 'sql', 'react', 'vite', 'opencv', 'tensorflow-lite',
-  'raspberry-pi', 'esp32', 'github', 'claude-code', 'codex', 'vs-code', 'vercel', 'linux',
+  'raspberry-pi', 'esp32', 'github', 'claude-code', 'codex', 'vs-code', 'vercel', 'linux', 'gnu', 'unix', 'nixos', 'nix', 'docker', 'bash',
 ].map(slug => ({ image: `/stack/${slug}.svg`, title: slug.replace(/-/g, ' ') }));
 
 const PODIUM = [
@@ -59,6 +59,7 @@ const TECH = [
   [SiEspressif, 'ESP32', 'https://www.espressif.com'], [SiArduino, 'Arduino', 'https://www.arduino.cc'],
   [SiGithub, 'GitHub', 'https://github.com/nyrasdev'], [SiClaude, 'Claude Code', 'https://claude.com/claude-code'],
   [SiVercel, 'Vercel', 'https://vercel.com'], [SiLinux, 'Linux', 'https://kernel.org'],
+  [SiGnu, 'GNU', 'https://www.gnu.org'], [SiNixos, 'NixOS', 'https://nixos.org'], [SiDocker, 'Docker', 'https://www.docker.com'], [SiGnubash, 'Bash', 'https://www.gnu.org/software/bash/'],
 ].map(([Icon, title, href]) => ({ node: <Icon />, title, href }));
 // --------------------------------
 
@@ -200,7 +201,7 @@ export default function App() {
       <section id="stack" className="stack" aria-labelledby="stack-h">
         <div className="stack-label">
           <h2 id="stack-h" className="path"><span>~/</span>stack</h2>
-          <p>Languages, hardware and the tools I ship with.</p>
+          <p>Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker) and the tools I ship with.</p>
         </div>
         <DriftWall items={TOOLS} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={42} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} overlayColor="#0a0a0a" />
       </section>

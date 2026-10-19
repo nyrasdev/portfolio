@@ -152,6 +152,6 @@ footer { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); disp
 .laptop-canvas { position: absolute !important; inset: 0; }
 .laptop-copy { position: absolute; z-index: 1; top: 12vh; left: 0; right: 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
   padding-left: var(--gutter-l); padding-right: var(--gutter-r); pointer-events: none; }
-.laptop-copy .path { position: static; }
+.laptop-copy .path { position: static; align-self: center; }
 .laptop-copy h2 { font-family: var(--display); font-weight: 800; font-stretch: 75%; font-variation-settings: 'wdth' 75; font-size: clamp(2.6rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.03em; }
 .laptop-copy p.muted { max-width: 46ch; }
