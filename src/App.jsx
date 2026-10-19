@@ -5,6 +5,7 @@ import HalftoneReveal from './components/HalftoneReveal';
 import AccordionGallery from './components/AccordionGallery';
 import DriftWall from './components/DriftWall';
 import Dock from './components/Dock';
+import Lanyard from './components/Lanyard';
 
 // ---- Edit your content here ----
 const ME = { handle: 'nyras', age: 16, role: 'Software engineer', place: 'Panamá' };
@@ -107,6 +108,9 @@ export default function App() {
             </div>
           </div>
         </SwarmCursor>
+        <div className="hero-badge">
+          <Lanyard frontImage="/lanyard/card-front.png" backImage="/lanyard/card-back.png" strapImage="/lanyard/band.png" strapColor="#0e121a" metal="silver" />
+        </div>
       </header>
 
       <main>
