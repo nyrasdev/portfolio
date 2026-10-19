@@ -136,10 +136,11 @@ export default function App() {
         </ScrollExpand>
       </div>
 
-      <Laptop>
+      <Laptop site={LINKS.balboita}>
         <p className="path"><span>~/</span>software</p>
         <h2>The other half is code.</h2>
-        <p className="muted">BALBOITA's interface, showing what the robot found and the story behind it. Scroll to open.</p>
+        <p className="muted">That's the real BALBOITA site running live on the screen. I designed and built the whole UI. Scroll to open.</p>
+        <a className="laptop-link" href={LINKS.balboita} target="_blank" rel="noreferrer">open balboita.vercel.app ↗</a>
       </Laptop>
 
       <main>
