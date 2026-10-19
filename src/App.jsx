@@ -186,7 +186,7 @@ export default function App() {
         </ScrollExpand>
       </div>
 
-      <Laptop>
+      <Laptop videoSrc="/balboita-ui.mp4">
         <p className="path"><span>~/</span>software</p>
         <h2>{t.swH}</h2>
         <p className="muted">{t.swP}</p>
