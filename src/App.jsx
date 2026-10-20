@@ -21,10 +21,12 @@ const ME = { handle: 'fer', age: 16, place: 'Panamá' };
 const LINKS = {
   instagram: 'https://instagram.com/utmpx',
   github: 'https://github.com/nyrasdev',
+  inapparency: 'https://github.com/nyrasdev/inapparency',
   balboita: 'https://balboita.vercel.app',
   email: 'fer@nyras.dev',
 };
 
+const INAP_STACK = ['C++20', 'ESP-IDF', 'CMake', '802.11', 'ESP32 · S3 · C3 · C6'];
 const STACK = ['Raspberry Pi 5', 'HX711 load cell', 'Ultrasonic sensor', 'TensorFlow Lite', 'OpenCV', 'Python', 'SQLite'];
 
 const GALLERY = [
@@ -68,6 +70,10 @@ const T = {
     lede: 'A robot that reads coins and bills and turns each one into a short lesson about where it came from.',
     body: "A Raspberry Pi 5 runs the vision model, and a load cell plus an ultrasonic sensor confirm what's been placed and weigh it. Built with my team, Los Tres Mosqueteros. I led the software, from the robot's code to the website.",
     gallery: ['The build', 'Scanning', 'Live demo', 'Bill result', 'Coin result'],
+    inK: 'Open source · v0.1.0', inTag: 'make the inapparent apparent.',
+    inLede: 'A headless wireless security monitor for ESP32 boards.',
+    inBody: "It listens to 802.11 management traffic, runs it through its own parser and detection rules, and tells you when something looks off and why: deauth floods, evil twins, auth floods and full attack chains. Passive by design, it never transmits. The whole detector fits in about 28 KB.",
+    inLink: 'github.com/nyrasdev/inapparency ↗', inHint: 'live OLED, fresh critical alert',
     mesaK: 'B2B SaaS · Beta', mesaT: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croatia', p1d: 'Oct 2026', p2: 'WRO Panamá National', p2d: '2026', r1: '3rd', r2: '2nd',
     stackP: 'Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker) and the tools I ship with.',
@@ -81,6 +87,10 @@ const T = {
     lede: 'Un robot que lee monedas y billetes y convierte cada uno en una lección corta sobre su origen.',
     body: 'Una Raspberry Pi 5 corre el modelo de visión, y una celda de carga con un sensor ultrasónico confirman qué se colocó y lo pesan. Hecho con mi equipo, Los Tres Mosqueteros. Yo me encargué del software, desde el código del robot hasta la web.',
     gallery: ['El armado', 'Escaneando', 'Demo en vivo', 'Resultado billete', 'Resultado moneda'],
+    inK: 'Código abierto · v0.1.0', inTag: 'make the inapparent apparent.',
+    inLede: 'Un monitor de seguridad inalámbrica headless para placas ESP32.',
+    inBody: 'Escucha el tráfico de gestión 802.11, lo pasa por su propio parser y reglas de detección, y te avisa cuando algo no cuadra y por qué: inundaciones de deauth, evil twins, auth floods y cadenas de ataque completas. Es pasivo por diseño: nunca transmite. Todo el detector cabe en unos 28 KB.',
+    inLink: 'github.com/nyrasdev/inapparency ↗', inHint: 'OLED en vivo, alerta crítica',
     mesaK: 'SaaS B2B · Beta', mesaT: 'Control de pedidos para micro restaurantes y pequeñas tiendas, hecho para que su contabilidad sea más rápida y fácil. En beta, ahora mismo en pruebas con un micro restaurante.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croacia', p1d: 'oct 2026', p2: 'WRO Nacional Panamá', p2d: '2026', r1: '3.º', r2: '2.º',
     stackP: 'Lenguajes, hardware, el lado Unix (GNU, NixOS, Nix, Docker) y las herramientas con las que trabajo.',
@@ -213,6 +223,34 @@ export default function App() {
           <div className="gallery">
             <AccordionGallery key={lang} items={gallery} defaultIndex={2} expandRatio={0.52} trigger="hover" />
           </div>
+
+          <article className="feature inap">
+            <div className="inap-media">
+              <pre className="inap-log" aria-label="Example inapparency alerts">
+{[
+  '$ inapparency-replay demo.pcap',
+  '[55.250] HIGH     evil-twin     conf=85',
+  '[60.190] HIGH     deauth-burst  conf=75',
+  '[60.190] CRITICAL attack-chain  conf=95',
+  '[70.450] LOW      malformed     conf=30',
+  '[80.490] MEDIUM   auth-flood    conf=55',
+].map((l, i) => <span key={i} className={l.includes('CRITICAL') ? 'crit' : i === 0 ? 'cmdline' : ''}>{l}{'\n'}</span>)}
+              </pre>
+              <figure className="inap-oled">
+                <img src="/inapparency-oled.png" alt="inapparency OLED screen showing a critical attack-chain alert" width="520" height="264" loading="lazy" />
+                <figcaption>{t.inHint}</figcaption>
+              </figure>
+            </div>
+            <div className="feature-text">
+              <p className="kicker">{t.inK}</p>
+              <h3>inapparency</h3>
+              <p className="inap-tag">{t.inTag}</p>
+              <p className="lede">{t.inLede}</p>
+              <p className="body">{t.inBody}</p>
+              <ul className="chips" aria-label="Stack">{INAP_STACK.map(x => <li key={x}>{x}</li>)}</ul>
+              <a className="more" href={LINKS.inapparency} target="_blank" rel="noreferrer">{t.inLink}</a>
+            </div>
+          </article>
 
           <div className="side">
             <article className="side-item">
