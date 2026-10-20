@@ -110,7 +110,7 @@ const Section = ({ id, path, children, className = '' }) => (
 export default function App() {
   const [lang, setLang] = useState(() => {
     try { const v = localStorage.getItem('lang'); if (v === 'es' || v === 'en') return v; } catch {}
-    return typeof navigator !== 'undefined' && navigator.language?.startsWith('es') ? 'es' : 'en';
+    return 'en'; // English by default; Spanish only when the visitor picks it
   });
   useEffect(() => {
     document.documentElement.lang = lang;
