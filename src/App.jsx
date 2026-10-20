@@ -25,7 +25,7 @@ const LINKS = {
   email: 'fer@nyras.dev',
 };
 
-const STACK = ['Raspberry Pi 5', 'ESP32', 'HuskyLens', 'HX711', 'TensorFlow Lite', 'OpenCV', 'Python', 'SQLite'];
+const STACK = ['Raspberry Pi 5', 'HX711 load cell', 'Ultrasonic sensor', 'TensorFlow Lite', 'OpenCV', 'Python', 'SQLite'];
 
 const GALLERY = [
   { image: '/gallery/montaje.webp', label: 'The build', alt: 'BALBOITA frame fully assembled next to its monitor' },
@@ -66,7 +66,7 @@ const T = {
     swH: 'The other half is code.', swP: 'I handled the software side of BALBOITA: the design and UI/UX, the website from frontend to backend, and the code that runs on the robot.', swLink: 'open balboita.vercel.app ↗',
     hint: 'hover to develop', kicker: 'WRO Future Innovators · Senior',
     lede: 'A robot that reads coins and bills and turns each one into a short lesson about where it came from.',
-    body: "A Raspberry Pi 5 runs the vision model, an ESP32 handles wireless, and a load cell plus ultrasonic sensor confirm what's been placed and weigh it. Built with my team, Los Tres Mosqueteros. I led the software, from the robot's code to the website.",
+    body: "A Raspberry Pi 5 runs the vision model, and a load cell plus an ultrasonic sensor confirm what's been placed and weigh it. Built with my team, Los Tres Mosqueteros. I led the software, from the robot's code to the website.",
     gallery: ['The build', 'Scanning', 'Live demo', 'Bill result', 'Coin result'],
     mesaK: 'B2B SaaS · Beta', mesaT: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croatia', p1d: 'Oct 2026', p2: 'WRO Panamá National', p2d: '2026', r1: '3rd', r2: '2nd',
@@ -79,7 +79,7 @@ const T = {
     swH: 'La otra mitad es código.', swP: 'Me encargué del lado del software de BALBOITA: el diseño y la UI/UX, la web de frontend a backend, y el código que corre en el robot.', swLink: 'abrir balboita.vercel.app ↗',
     hint: 'pasa el cursor para revelar', kicker: 'WRO Future Innovators · Senior',
     lede: 'Un robot que lee monedas y billetes y convierte cada uno en una lección corta sobre su origen.',
-    body: 'Una Raspberry Pi 5 corre el modelo de visión, un ESP32 maneja la conexión inalámbrica, y una celda de carga con un sensor ultrasónico confirman qué se colocó y lo pesan. Hecho con mi equipo, Los Tres Mosqueteros. Yo me encargué del software, desde el código del robot hasta la web.',
+    body: 'Una Raspberry Pi 5 corre el modelo de visión, y una celda de carga con un sensor ultrasónico confirman qué se colocó y lo pesan. Hecho con mi equipo, Los Tres Mosqueteros. Yo me encargué del software, desde el código del robot hasta la web.',
     gallery: ['El armado', 'Escaneando', 'Demo en vivo', 'Resultado billete', 'Resultado moneda'],
     mesaK: 'SaaS B2B · Beta', mesaT: 'Control de pedidos para micro restaurantes y pequeñas tiendas, hecho para que su contabilidad sea más rápida y fácil. En beta, ahora mismo en pruebas con un micro restaurante.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croacia', p1d: 'oct 2026', p2: 'WRO Nacional Panamá', p2d: '2026', r1: '3.º', r2: '2.º',
