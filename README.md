@@ -1,6 +1,6 @@
 # nyras.dev
 
-Fer's portfolio. Vite + React, with React Bits components (Dither, DecryptedText, SpotlightCard, Dock) in `src/components`.
+My portfolio. Vite + React, with React Bits components (Dither, DecryptedText, SpotlightCard, Dock) in `src/components`.
 
 ## Run it
 ```bash
