@@ -99,7 +99,7 @@ export default function Laptop({ videoSrc }) {
 
   return (
     <div ref={wrap} className="laptop">
-      <Canvas className="laptop-canvas" camera={{ fov: 12, position: [0, -10, 220] }} dpr={[1, 1.5]}>
+      <Canvas className="laptop-canvas" camera={{ fov: 8.5, position: [0, -8, 220] }} dpr={[1, 1.5]}>
         <Suspense fallback={null}>
           <Environment resolution={128}>
             <Lightformer intensity={2} position={[0, 5, -9]} scale={[10, 10, 1]} />
