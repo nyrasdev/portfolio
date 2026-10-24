@@ -1,4 +1,4 @@
-// Scroll-driven laptop: the lid opens as you scroll through the section.
+// 3D laptop: the lid opens once when it scrolls into view.
 // Model (mac.glb) from shahdinsalman23/react-macbookpro (MIT).
 // The screen plays a pre-recorded scroll-through of the BALBOITA site as a video texture
 // (much lighter than a live iframe), and only while the section is on screen.
@@ -39,7 +39,7 @@ function Model({ progress, video }) {
       const target = THREE.MathUtils.degToRad(180 - p * 90);
       meshes.screen.rotation.x = THREE.MathUtils.lerp(meshes.screen.rotation.x, target, 0.12);
     }
-    if (group.current) group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, (p - 0.5) * 0.35, 0.08);
+    if (group.current) group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, (p - 1) * 0.4, 0.08);
   });
 
   return (
@@ -49,7 +49,7 @@ function Model({ progress, video }) {
   );
 }
 
-export default function Laptop({ children, videoSrc }) {
+export default function Laptop({ videoSrc }) {
   const wrap = useRef(null);
   const progress = useRef(0);
   const video = useMemo(() => {
@@ -64,18 +64,26 @@ export default function Laptop({ children, videoSrc }) {
     return v;
   }, [videoSrc]);
 
+  // open the lid once, when the laptop scrolls into view (no pinned scrolling)
   useEffect(() => {
-    const onScroll = () => {
-      const el = wrap.current;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      const total = r.height - window.innerHeight;
-      progress.current = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
+    const el = wrap.current;
+    if (!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let raf, start;
+    const animate = t => {
+      if (start === undefined) start = t;
+      const k = Math.min(1, (t - start) / 1400);
+      progress.current = 1 - Math.pow(1 - k, 3);
+      if (k < 1) raf = requestAnimationFrame(animate);
     };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      if (reduce) progress.current = 1;
+      else raf = requestAnimationFrame(animate);
+    }, { threshold: 0.35 });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
   }, []);
 
   // play the video only while the section is visible
@@ -91,20 +99,17 @@ export default function Laptop({ children, videoSrc }) {
 
   return (
     <div ref={wrap} className="laptop">
-      <div className="laptop-stage">
-        <div className="laptop-copy">{children}</div>
-        <Canvas className="laptop-canvas" camera={{ fov: 12, position: [0, -10, 220] }} dpr={[1, 1.5]}>
-          <Suspense fallback={null}>
-            <Environment resolution={128}>
-              <Lightformer intensity={2} position={[0, 5, -9]} scale={[10, 10, 1]} />
-              <Lightformer intensity={1.5} position={[-5, 1, -1]} rotation-y={Math.PI / 2} scale={[20, 2, 1]} />
-              <Lightformer intensity={1.5} position={[5, 1, 1]} rotation-y={-Math.PI / 2} scale={[20, 2, 1]} />
-              <Lightformer intensity={3} position={[0, 0, 10]} scale={[10, 4, 1]} />
-            </Environment>
-            <Model progress={progress} video={video} />
-          </Suspense>
-        </Canvas>
-      </div>
+      <Canvas className="laptop-canvas" camera={{ fov: 12, position: [0, -10, 220] }} dpr={[1, 1.5]}>
+        <Suspense fallback={null}>
+          <Environment resolution={128}>
+            <Lightformer intensity={2} position={[0, 5, -9]} scale={[10, 10, 1]} />
+            <Lightformer intensity={1.5} position={[-5, 1, -1]} rotation-y={Math.PI / 2} scale={[20, 2, 1]} />
+            <Lightformer intensity={1.5} position={[5, 1, 1]} rotation-y={-Math.PI / 2} scale={[20, 2, 1]} />
+            <Lightformer intensity={3} position={[0, 0, 10]} scale={[10, 4, 1]} />
+          </Environment>
+          <Model progress={progress} video={video} />
+        </Suspense>
+      </Canvas>
     </div>
   );
 }

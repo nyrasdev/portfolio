@@ -1,12 +1,9 @@
 import GradientASCII from './components/GradientASCII';
 import SwarmCursor from './components/SwarmCursor';
 import DecryptedText from './components/DecryptedText';
-import HalftoneReveal from './components/HalftoneReveal';
-import AccordionGallery from './components/AccordionGallery';
 import DriftWall from './components/DriftWall';
 import Dock from './components/Dock';
 import Lanyard from './components/Lanyard';
-import ScrollExpand from './components/ScrollExpand';
 import Topography from './components/Topography';
 import LogoLoop from './components/LogoLoop';
 import Laptop from './components/Laptop';
@@ -19,7 +16,7 @@ import { SiPython, SiJavascript, SiCplusplus, SiHtml5, SiCss, SiSqlite, SiReact,
 const ME = { handle: 'fer', age: 16, place: 'Panamá' };
 
 const LINKS = {
-  instagram: 'https://instagram.com/utmpx',
+  instagram: 'https://instagram.com/nyyras',
   github: 'https://github.com/nyrasdev',
   inapparency: 'https://github.com/nyrasdev/inapparency',
   balboita: 'https://balboita.vercel.app',
@@ -27,15 +24,7 @@ const LINKS = {
 };
 
 const INAP_STACK = ['C++20', 'ESP-IDF', 'CMake', '802.11', 'ESP32 · S3 · C3 · C6'];
-const STACK = ['Raspberry Pi 5', 'HX711 load cell', 'Ultrasonic sensor', 'TensorFlow Lite', 'OpenCV', 'Python', 'SQLite'];
 
-const GALLERY = [
-  { image: '/gallery/montaje.webp', label: 'The build', alt: 'BALBOITA frame fully assembled next to its monitor' },
-  { image: '/gallery/bill-panda.jpg', label: 'Scanning', alt: 'A banknote placed under the BALBOITA camera' },
-  { image: '/gallery/robot-front.webp', label: 'Live demo', alt: 'BALBOITA scanning a banknote with the mascot on its front screen' },
-  { image: '/gallery/ui-billete.jpg', label: 'Bill result', alt: 'BALBOITA interface showing the result for a banknote' },
-  { image: '/gallery/screen-pound.webp', label: 'Coin result', alt: 'BALBOITA interface showing the result for a coin' },
-];
 
 const TOOLS = [
   'python', 'javascript', 'c', 'html-css', 'sql', 'react', 'vite', 'opencv', 'tensorflow-lite',
@@ -64,12 +53,13 @@ const TECH = [
 const T = {
   en: {
     role: 'Software & UI/UX engineer', age: 'age', roleL: 'role', host: 'host', best: 'best', bestV: '3rd · WRO Europe',
-    revealH: '3rd in Europe.', revealP: "A coin-reading robot we took from Panamá's regionals to the WRO Open Championship in Zagreb.", scroll: 'scroll',
-    swH: 'The other half is code.', swP: 'I handled the software side of BALBOITA: the design and UI/UX, the website from frontend to backend, and the code that runs on the robot.', swLink: 'open balboita.vercel.app ↗',
-    hint: 'hover to develop', kicker: 'WRO Future Innovators · Senior',
-    lede: 'A robot that reads coins and bills and turns each one into a short lesson about where it came from.',
-    body: "A Raspberry Pi 5 runs the vision model, and a load cell plus an ultrasonic sensor confirm what's been placed and weigh it. Built with my team, Los Tres Mosqueteros. I led the software, from the robot's code to the website.",
-    gallery: ['The build', 'Scanning', 'Live demo', 'Bill result', 'Coin result'],
+    balK: 'WRO · 3rd in Europe, 2nd in Panamá', balLede: 'A robot that reads coins and bills and tells the story behind each one. My part was the software.',
+    balParts: [
+      ['UI / UX', 'Designed the whole interface people see and use.'],
+      ['Website', 'Built it end to end, frontend and backend.'],
+      ['Robot code', 'Python on a Raspberry Pi 5: the vision model with OpenCV and TensorFlow Lite, plus the sensors.'],
+    ],
+    balTeam: 'Built with my team, Los Tres Mosqueteros.', balLink: 'balboita.vercel.app ↗',
     inK: 'Open source · v0.1.0', inTag: 'make the inapparent apparent.',
     inLede: 'A headless wireless security monitor for ESP32 boards.',
     inBody: "It listens to 802.11 management traffic, runs it through its own parser and detection rules, and tells you when something looks off and why: deauth floods, evil twins, auth floods and full attack chains. Passive by design, it never transmits. The whole detector fits in about 28 KB.",
@@ -81,12 +71,13 @@ const T = {
   },
   es: {
     role: 'Ingeniero de software y UI/UX', age: 'edad', roleL: 'rol', host: 'desde', best: 'mejor', bestV: '3.º · WRO Europa',
-    revealH: '3.º en Europa.', revealP: 'Un robot que lee monedas y que llevamos desde las regionales de Panamá hasta el WRO Open Championship en Zagreb.', scroll: 'desliza',
-    swH: 'La otra mitad es código.', swP: 'Me encargué del lado del software de BALBOITA: el diseño y la UI/UX, la web de frontend a backend, y el código que corre en el robot.', swLink: 'abrir balboita.vercel.app ↗',
-    hint: 'pasa el cursor para revelar', kicker: 'WRO Future Innovators · Senior',
-    lede: 'Un robot que lee monedas y billetes y convierte cada uno en una lección corta sobre su origen.',
-    body: 'Una Raspberry Pi 5 corre el modelo de visión, y una celda de carga con un sensor ultrasónico confirman qué se colocó y lo pesan. Hecho con mi equipo, Los Tres Mosqueteros. Yo me encargué del software, desde el código del robot hasta la web.',
-    gallery: ['El armado', 'Escaneando', 'Demo en vivo', 'Resultado billete', 'Resultado moneda'],
+    balK: 'WRO · 3.º en Europa, 2.º en Panamá', balLede: 'Un robot que lee monedas y billetes y cuenta la historia detrás de cada uno. Mi parte fue el software.',
+    balParts: [
+      ['UI / UX', 'Diseñé toda la interfaz que la gente ve y usa.'],
+      ['Web', 'La hice de principio a fin, frontend y backend.'],
+      ['Código del robot', 'Python en una Raspberry Pi 5: el modelo de visión con OpenCV y TensorFlow Lite, y los sensores.'],
+    ],
+    balTeam: 'Hecho con mi equipo, Los Tres Mosqueteros.', balLink: 'balboita.vercel.app ↗',
     inK: 'Código abierto · v0.1.0', inTag: 'make the inapparent apparent.',
     inLede: 'Un monitor de seguridad inalámbrica headless para placas ESP32.',
     inBody: 'Escucha el tráfico de gestión 802.11, lo pasa por su propio parser y reglas de detección, y te avisa cuando algo no cuadra y por qué: inundaciones de deauth, evil twins, auth floods y cadenas de ataque completas. Es pasivo por diseño: nunca transmite. Todo el detector cabe en unos 28 KB.',
@@ -137,7 +128,6 @@ export default function App() {
   }, []);
   const t = T[lang];
   const toggleLang = () => setLang(l => (l === 'en' ? 'es' : 'en'));
-  const gallery = GALLERY.map((g, i) => ({ ...g, label: t.gallery[i] }));
 
   const dockItems = [
     { icon: icons.ig, label: 'Instagram', onClick: open(LINKS.instagram) },
@@ -189,40 +179,24 @@ export default function App() {
         </div>
       </header>
 
-      <div className="reveal">
-        <ScrollExpand src="/gallery/robot-front.webp" alt="BALBOITA scanning a banknote" title="BALBOITA" scrollHint={t.scroll} useWindowScroll>
-          <h2>{t.revealH}</h2>
-          <p>{t.revealP}</p>
-        </ScrollExpand>
-      </div>
-
-      <Laptop videoSrc="/balboita-ui.mp4">
-        <p className="path"><span>~/</span>software</p>
-        <h2>{t.swH}</h2>
-        <p className="muted">{t.swP}</p>
-        <a className="laptop-link" href={LINKS.balboita} target="_blank" rel="noreferrer">{t.swLink}</a>
-      </Laptop>
 
       <main>
         <Section id="work" path="work">
-          <article className="feature">
-            <div className="feature-img">
-              <HalftoneReveal src="/gallery/robot-front.webp" mode="mono" shape="dot" cellSize={6} angle={45} inkColor="#f2f2f2" paperColor="#0a0a0a" revealRadius={160} />
-              <span className="hint">{t.hint}</span>
-            </div>
+          <article className="feature bal">
+            <Laptop videoSrc="/balboita-ui.mp4" />
             <div className="feature-text">
-              <p className="kicker">{t.kicker}</p>
+              <p className="kicker">{t.balK}</p>
               <h3>BALBOITA</h3>
-              <p className="lede">{t.lede}</p>
-              <p className="body">{t.body}</p>
-              <ul className="chips" aria-label="Stack">{STACK.map(s => <li key={s}>{s}</li>)}</ul>
-              <a className="more" href={LINKS.balboita} target="_blank" rel="noreferrer">balboita.vercel.app ↗</a>
+              <p className="lede">{t.balLede}</p>
+              <ul className="bal-parts">
+                {t.balParts.map(([name, desc]) => (
+                  <li key={name}><span className="bal-name">{name}</span><span className="bal-desc">{desc}</span></li>
+                ))}
+              </ul>
+              <p className="bal-team">{t.balTeam}</p>
+              <a className="more" href={LINKS.balboita} target="_blank" rel="noreferrer">{t.balLink}</a>
             </div>
           </article>
-
-          <div className="gallery">
-            <AccordionGallery key={lang} items={gallery} defaultIndex={2} expandRatio={0.52} trigger="hover" />
-          </div>
 
           <article className="feature inap">
             <div className="inap-media">
@@ -304,7 +278,7 @@ export default function App() {
           </div>
           <Section id="contact" path="contact" className="contact-sec">
             <p className="big-mail"><span className="sel">{LINKS.email}</span></p>
-            <p className="muted">{t.dm} <a href={LINKS.instagram} target="_blank" rel="noreferrer">@utmpx</a> {t.onIg}</p>
+            <p className="muted">{t.dm} <a href={LINKS.instagram} target="_blank" rel="noreferrer">@nyyras</a> {t.onIg}</p>
           </Section>
         </div>
         <footer><span>nyras.dev</span><span>© 2026 {ME.handle}</span></footer>
