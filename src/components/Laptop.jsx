@@ -1,4 +1,4 @@
-// 3D laptop: the lid opens once when it scrolls into view.
+// 3D laptop: the lid opens as you scroll past it.
 // Model (mac.glb) from shahdinsalman23/react-macbookpro (MIT).
 // The screen plays a pre-recorded scroll-through of the BALBOITA site as a video texture
 // (much lighter than a live iframe), and only while the section is on screen.
@@ -64,26 +64,21 @@ export default function Laptop({ videoSrc }) {
     return v;
   }, [videoSrc]);
 
-  // open the lid once, when the laptop scrolls into view (no pinned scrolling)
+  // the lid follows your scroll as the block moves up the screen (no pinned section):
+  // closed when it enters at the bottom, fully open by the time it's near the middle
   useEffect(() => {
     const el = wrap.current;
     if (!el) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let raf, start;
-    const animate = t => {
-      if (start === undefined) start = t;
-      const k = Math.min(1, (t - start) / 1400);
-      progress.current = 1 - Math.pow(1 - k, 3);
-      if (k < 1) raf = requestAnimationFrame(animate);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { progress.current = 1; return; }
+    const onScroll = () => {
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      progress.current = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.6)));
     };
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      if (reduce) progress.current = 1;
-      else raf = requestAnimationFrame(animate);
-    }, { threshold: 0.35 });
-    io.observe(el);
-    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
   }, []);
 
   // play the video only while the section is visible
