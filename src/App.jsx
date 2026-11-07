@@ -7,6 +7,7 @@ import Lanyard from './components/Lanyard';
 import Topography from './components/Topography';
 import LogoLoop from './components/LogoLoop';
 import Laptop from './components/Laptop';
+import DemoVideo from './components/DemoVideo';
 import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
@@ -19,10 +20,12 @@ const LINKS = {
   instagram: 'https://instagram.com/nyyras',
   github: 'https://github.com/nyrasdev',
   inapparency: 'https://github.com/nyrasdev/inapparency',
+  nyrasview: 'https://github.com/nyrasdev/nyrasview',
   balboita: 'https://balboita.vercel.app',
   email: 'fer@nyras.dev',
 };
 
+const NV_STACK = ['Python 3.11+', 'Web GUI', 'Terminal UI', 'Linux · macOS · Windows', 'MIT'];
 const INAP_STACK = ['C++20', 'ESP-IDF', 'CMake', '802.11', 'ESP32 · S3 · C3 · C6'];
 
 
@@ -60,6 +63,10 @@ const T = {
       ['Robot code', 'Python on a Raspberry Pi 5: the vision model with OpenCV and TensorFlow Lite, plus the sensors.'],
     ],
     balTeam: 'Built with my team, Los Tres Mosqueteros.', balLink: 'balboita.vercel.app ↗',
+    nvK: 'Open source · v2.0.0', nvLede: 'A control center for AI coding agents.',
+    nvBody: 'See what every agent is doing right now, down to the file it is editing, plus its CPU, tokens, cost and plan limits. Prompt several agents at once and compare their answers, let one fix a failing check, or hand the work to another when a limit hits.',
+    nvWorks: 'Works with Claude Code, Codex, Gemini CLI, opencode, Cursor, Ollama and more, in your browser, your terminal or on your phone.',
+    nvLink: 'github.com/nyrasdev/nyrasview ↗', nvVideo: 'nyrasview demo: the overview, watching an agent edit a site, and two agents answering the same prompt',
     inK: 'Open source · v0.1.0', inTag: 'make the inapparent apparent.',
     inLede: 'A headless wireless security monitor for ESP32 boards.',
     inBody: "It listens to 802.11 management traffic, runs it through its own parser and detection rules, and tells you when something looks off and why: deauth floods, evil twins, auth floods and full attack chains. Passive by design, it never transmits. The whole detector fits in about 28 KB.",
@@ -78,6 +85,10 @@ const T = {
       ['Código del robot', 'Python en una Raspberry Pi 5: el modelo de visión con OpenCV y TensorFlow Lite, y los sensores.'],
     ],
     balTeam: 'Hecho con mi equipo, Los Tres Mosqueteros.', balLink: 'balboita.vercel.app ↗',
+    nvK: 'Código abierto · v2.0.0', nvLede: 'Un centro de control para agentes de IA que programan.',
+    nvBody: 'Ves qué está haciendo cada agente en este momento, hasta el archivo que edita, además de su CPU, tokens, costo y límites del plan. Le escribes a varios agentes a la vez y comparas sus respuestas, dejas que uno arregle un check que falla, o pasas el trabajo a otro cuando llega a un límite.',
+    nvWorks: 'Funciona con Claude Code, Codex, Gemini CLI, opencode, Cursor, Ollama y más, en el navegador, la terminal o el celular.',
+    nvLink: 'github.com/nyrasdev/nyrasview ↗', nvVideo: 'Demo de nyrasview: el resumen, un agente editando una web y dos agentes respondiendo el mismo prompt',
     inK: 'Código abierto · v0.1.0', inTag: 'make the inapparent apparent.',
     inLede: 'Un monitor de seguridad inalámbrica headless para placas ESP32.',
     inBody: 'Escucha el tráfico de gestión 802.11, lo pasa por su propio parser y reglas de detección, y te avisa cuando algo no cuadra y por qué: inundaciones de deauth, evil twins, auth floods y cadenas de ataque completas. Es pasivo por diseño: nunca transmite. Todo el detector cabe en unos 28 KB.',
@@ -196,6 +207,19 @@ export default function App() {
               <p className="bal-team">{t.balTeam}</p>
               <a className="more" href={LINKS.balboita} target="_blank" rel="noreferrer">{t.balLink}</a>
             </div>
+          </article>
+
+          <article className="feature nv">
+            <div className="feature-text">
+              <p className="kicker">{t.nvK}</p>
+              <h3>nyrasview</h3>
+              <p className="lede">{t.nvLede}</p>
+              <p className="body">{t.nvBody}</p>
+              <p className="body">{t.nvWorks}</p>
+              <ul className="chips" aria-label="Stack">{NV_STACK.map(x => <li key={x}>{x}</li>)}</ul>
+              <a className="more" href={LINKS.nyrasview} target="_blank" rel="noreferrer">{t.nvLink}</a>
+            </div>
+            <DemoVideo src="/nyrasview-demo.mp4" poster="/nyrasview-poster.jpg" title="nyrasview gui" label={t.nvVideo} />
           </article>
 
           <article className="feature inap">
