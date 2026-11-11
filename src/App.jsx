@@ -25,7 +25,7 @@ const LINKS = {
   email: 'fer@nyras.dev',
 };
 
-const NV_STACK = ['Python 3.11+', 'Web GUI', 'Terminal UI', 'Linux · macOS · Windows', 'MIT'];
+const NV_STACK = ['Runs locally', 'Local AI models', 'Obsidian', 'TUI + CLI', 'Web GUI', 'Python 3.11+', 'Linux · macOS · Windows', 'MIT'];
 const INAP_STACK = ['C++20', 'ESP-IDF', 'CMake', '802.11', 'ESP32 · S3 · C3 · C6'];
 
 
@@ -63,14 +63,16 @@ const T = {
       ['Robot code', 'Python on a Raspberry Pi 5: the vision model with OpenCV and TensorFlow Lite, plus the sensors.'],
     ],
     balTeam: 'Built with my team, Los Tres Mosqueteros.', balLink: 'balboita.vercel.app ↗',
-    nvK: 'Open source · v2.0.0', nvLede: 'A control center for AI coding agents.',
+    nvK: 'Open source · v2.0.0', nvLede: 'A control center for AI-driven development, running completely on your own machine.',
     nvBody: 'See what every agent is doing right now, down to the file it is editing, plus its CPU, tokens, cost and plan limits. Prompt several agents at once and compare their answers, let one fix a failing check, or hand the work to another when a limit hits.',
-    nvWorks: 'Works with Claude Code, Codex, Gemini CLI, opencode, Cursor, Ollama and more, in your browser, your terminal or on your phone.',
+    nvWorks: 'Works with Claude Code, Codex, Gemini CLI, Cursor and more, plus local models through Ollama and LM Studio. It connects to Obsidian for notes, and you don\'t need a browser: there\'s a terminal UI and a command line, so most of the work happens right in your terminal.',
     nvLink: 'github.com/nyrasdev/nyrasview ↗', nvVideo: 'nyrasview demo: the overview, watching an agent edit a site, and two agents answering the same prompt',
     inK: 'Open source · v0.1.0', inTag: 'make the inapparent apparent.',
     inLede: 'A headless wireless security monitor for ESP32 boards.',
     inBody: "It listens to 802.11 management traffic, runs it through its own parser and detection rules, and tells you when something looks off and why: deauth floods, evil twins, auth floods and full attack chains. Passive by design, it never transmits. The whole detector fits in about 28 KB.",
     inLink: 'github.com/nyrasdev/inapparency ↗', inHint: 'live OLED, fresh critical alert',
+    faK: 'Operating system · In progress', faT: 'My own Linux distro based on Arch, built with cybersecurity as the priority. The name is fire + Arch, from firewall and Arch Linux.',
+    lfsK: 'Operating system · Built from source', lfsT: 'An operating system I built by hand with Linux From Scratch: compiling and configuring the whole system from source code.',
     mesaK: 'B2B SaaS · Beta', mesaT: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croatia', p1d: 'Oct 2026', p2: 'WRO Panamá National', p2d: '2026', r1: '3rd', r2: '2nd',
     stackP: 'Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker) and the tools I ship with.',
@@ -85,14 +87,16 @@ const T = {
       ['Código del robot', 'Python en una Raspberry Pi 5: el modelo de visión con OpenCV y TensorFlow Lite, y los sensores.'],
     ],
     balTeam: 'Hecho con mi equipo, Los Tres Mosqueteros.', balLink: 'balboita.vercel.app ↗',
-    nvK: 'Código abierto · v2.0.0', nvLede: 'Un centro de control para agentes de IA que programan.',
+    nvK: 'Código abierto · v2.0.0', nvLede: 'Un centro de control para el desarrollo con IA, que corre completamente en tu propia máquina.',
     nvBody: 'Ves qué está haciendo cada agente en este momento, hasta el archivo que edita, además de su CPU, tokens, costo y límites del plan. Le escribes a varios agentes a la vez y comparas sus respuestas, dejas que uno arregle un check que falla, o pasas el trabajo a otro cuando llega a un límite.',
-    nvWorks: 'Funciona con Claude Code, Codex, Gemini CLI, opencode, Cursor, Ollama y más, en el navegador, la terminal o el celular.',
+    nvWorks: 'Funciona con Claude Code, Codex, Gemini CLI, Cursor y más, y con modelos locales vía Ollama y LM Studio. Se conecta con Obsidian para las notas, y no necesitas navegador: tiene interfaz de terminal y línea de comandos, así que casi todo el trabajo se hace desde la terminal.',
     nvLink: 'github.com/nyrasdev/nyrasview ↗', nvVideo: 'Demo de nyrasview: el resumen, un agente editando una web y dos agentes respondiendo el mismo prompt',
     inK: 'Código abierto · v0.1.0', inTag: 'make the inapparent apparent.',
     inLede: 'Un monitor de seguridad inalámbrica headless para placas ESP32.',
     inBody: 'Escucha el tráfico de gestión 802.11, lo pasa por su propio parser y reglas de detección, y te avisa cuando algo no cuadra y por qué: inundaciones de deauth, evil twins, auth floods y cadenas de ataque completas. Es pasivo por diseño: nunca transmite. Todo el detector cabe en unos 28 KB.',
     inLink: 'github.com/nyrasdev/inapparency ↗', inHint: 'OLED en vivo, alerta crítica',
+    faK: 'Sistema operativo · En desarrollo', faT: 'Mi propia distro de Linux basada en Arch, hecha con la ciberseguridad como prioridad. El nombre es fire + Arch, de firewall y Arch Linux.',
+    lfsK: 'Sistema operativo · Desde el código fuente', lfsT: 'Un sistema operativo que armé a mano con Linux From Scratch: compilando y configurando todo el sistema desde el código fuente.',
     mesaK: 'SaaS B2B · Beta', mesaT: 'Control de pedidos para micro restaurantes y pequeñas tiendas, hecho para que su contabilidad sea más rápida y fácil. En beta, ahora mismo en pruebas con un micro restaurante.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croacia', p1d: 'oct 2026', p2: 'WRO Nacional Panamá', p2d: '2026', r1: '3.º', r2: '2.º',
     stackP: 'Lenguajes, hardware, el lado Unix (GNU, NixOS, Nix, Docker) y las herramientas con las que trabajo.',
@@ -255,6 +259,16 @@ export default function App() {
               <p className="kicker">{t.mesaK}</p>
               <h3>MesaFlow</h3>
               <p>{t.mesaT}</p>
+            </article>
+            <article className="side-item">
+              <p className="kicker">{t.faK}</p>
+              <h3>FireArch</h3>
+              <p>{t.faT}</p>
+            </article>
+            <article className="side-item">
+              <p className="kicker">{t.lfsK}</p>
+              <h3>LFS build</h3>
+              <p>{t.lfsT}</p>
             </article>
           </div>
         </Section>
