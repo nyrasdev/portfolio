@@ -8,6 +8,7 @@ import Topography from './components/Topography';
 import LogoLoop from './components/LogoLoop';
 import Laptop from './components/Laptop';
 import DemoVideo from './components/DemoVideo';
+import AllList from './components/AllList';
 import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
@@ -32,7 +33,7 @@ const INAP_STACK = ['C++20', 'ESP-IDF', 'CMake', '802.11', 'ESP32 · S3 · C3 ·
 const TOOLS = [
   'python', 'javascript', 'c', 'html-css', 'sql', 'react', 'vite', 'opencv', 'tensorflow-lite',
   'raspberry-pi', 'esp32', 'github', 'claude-code', 'codex', 'vs-code', 'vercel', 'linux', 'gnu', 'unix', 'nixos', 'nix', 'docker', 'bash',
-  'assembly', 'lfs', 'gcc', 'binutils', 'glibc', 'gnu-make', 'grub', 'cmake', 'slackware', 'gentoo',
+  'assembly', 'lfs', 'gcc', 'binutils', 'glibc', 'gnu-make', 'grub', 'cmake', 'slackware', 'gentoo', 'shell', 'c-sharp',
 ].map(slug => ({ image: `/stack/${slug}.svg`, title: slug.replace(/-/g, ' ') }));
 
 
@@ -58,7 +59,30 @@ const TECH = [
   [() => <span className="tech-txt">make</span>, 'GNU Make', 'https://www.gnu.org/software/make/'],
   [() => <span className="tech-txt">GRUB</span>, 'GRUB', 'https://www.gnu.org/software/grub/'],
   [SiCmake, 'CMake', 'https://cmake.org'], [SiSlackware, 'Slackware', 'https://www.slackware.com'], [SiGentoo, 'Gentoo', 'https://www.gentoo.org'],
+  [() => <span className="tech-txt">C#</span>, 'C#', 'https://learn.microsoft.com/dotnet/csharp/'], [() => <span className="tech-txt">sh</span>, 'Shell', 'https://www.gnu.org/software/bash/'],
 ].map(([Icon, title, href]) => ({ node: <Icon />, title, href }));
+
+
+const ALL = {
+  en: [
+    { name: 'Languages', items: ['Python', 'JavaScript', 'C', 'C++20', 'C#', 'Assembly', 'Shell', 'Bash', 'HTML', 'CSS', 'SQL / SQLite'] },
+    { name: 'Web & UI/UX', items: ['React', 'Vite', 'React Bits', 'UI/UX design'] },
+    { name: 'Unix & operating systems', items: ['Linux', 'GNU', 'Unix', 'NixOS', 'Nix', 'Docker', 'Slackware', 'Gentoo', 'Arch Linux', 'Linux From Scratch', 'FireArch (in progress)'] },
+    { name: 'Toolchain & build', items: ['GCC', 'Binutils', 'Glibc', 'GNU Make', 'CMake', 'GRUB', 'ESP-IDF'] },
+    { name: 'Hardware & vision', items: ['ESP32', 'Raspberry Pi', 'Arduino', 'OpenCV', 'TensorFlow Lite', '802.11'] },
+    { name: 'AI & workflow', items: ['Claude Code', 'Codex', 'Gemini CLI', 'Ollama', 'LM Studio', 'Obsidian', 'GitHub', 'Vercel', 'VS Code'] },
+    { name: 'Projects', items: ['BALBOITA', 'inapparency', 'nyrasview', 'MesaFlow', 'FireArch', 'LFS build'] },
+  ],
+  es: [
+    { name: 'Lenguajes', items: ['Python', 'JavaScript', 'C', 'C++20', 'C#', 'Assembly', 'Shell', 'Bash', 'HTML', 'CSS', 'SQL / SQLite'] },
+    { name: 'Web y UI/UX', items: ['React', 'Vite', 'React Bits', 'Diseño UI/UX'] },
+    { name: 'Unix y sistemas operativos', items: ['Linux', 'GNU', 'Unix', 'NixOS', 'Nix', 'Docker', 'Slackware', 'Gentoo', 'Arch Linux', 'Linux From Scratch', 'FireArch (en desarrollo)'] },
+    { name: 'Toolchain y compilación', items: ['GCC', 'Binutils', 'Glibc', 'GNU Make', 'CMake', 'GRUB', 'ESP-IDF'] },
+    { name: 'Hardware y visión', items: ['ESP32', 'Raspberry Pi', 'Arduino', 'OpenCV', 'TensorFlow Lite', '802.11'] },
+    { name: 'IA y flujo de trabajo', items: ['Claude Code', 'Codex', 'Gemini CLI', 'Ollama', 'LM Studio', 'Obsidian', 'GitHub', 'Vercel', 'VS Code'] },
+    { name: 'Proyectos', items: ['BALBOITA', 'inapparency', 'nyrasview', 'MesaFlow', 'FireArch', 'LFS build'] },
+  ],
+};
 
 // ---- Copy in both languages (EN / ES) ----
 const T = {
@@ -84,6 +108,7 @@ const T = {
     mesaK: 'B2B SaaS · Beta', mesaT: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croatia', p1d: 'Oct 2026', p2: 'WRO Panamá National', p2d: '2026', r1: '3rd', r2: '2nd',
     stackP: 'Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker, Slackware, Gentoo, LFS), Assembly and the tools I ship with.',
+    allBtn: 'See everything I work with', allTitle: 'Everything I work with', allClose: 'Close',
     dm: 'or DM', onIg: 'on Instagram.', contact: 'Contact', lang: 'ES', langLabel: 'Ver en español',
   },
   es: {
@@ -108,6 +133,7 @@ const T = {
     mesaK: 'SaaS B2B · Beta', mesaT: 'Control de pedidos para micro restaurantes y pequeñas tiendas, hecho para que su contabilidad sea más rápida y fácil. En beta, ahora mismo en pruebas con un micro restaurante.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croacia', p1d: 'oct 2026', p2: 'WRO Nacional Panamá', p2d: '2026', r1: '3.º', r2: '2.º',
     stackP: 'Lenguajes, hardware, el lado Unix (GNU, NixOS, Nix, Docker, Slackware, Gentoo, LFS), Assembly y las herramientas con las que trabajo.',
+    allBtn: 'Ver todo con lo que trabajo', allTitle: 'Todo con lo que trabajo', allClose: 'Cerrar',
     dm: 'o escríbeme por', onIg: 'en Instagram.', contact: 'Contacto', lang: 'EN', langLabel: 'View in English',
   },
 };
@@ -309,6 +335,7 @@ export default function App() {
         <div className="stack-label">
           <h2 id="stack-h" className="path"><span>~/</span>stack</h2>
           <p>{t.stackP}</p>
+          <AllList groups={ALL[lang]} label={t.allBtn} title={t.allTitle} close={t.allClose} count={ALL[lang].reduce((n, g) => n + g.items.length, 0)} />
         </div>
         <DriftWall items={TOOLS} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={42} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} overlayColor="#0a0a0a" />
       </section>

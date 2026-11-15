@@ -195,3 +195,22 @@ footer { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); disp
 .win video { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 750; background: var(--bg); }
 .feature.nv h3 { font-size: clamp(2.6rem, 4.2vw, 4.5rem); overflow-wrap: normal; }
 .tech-txt { font-family: var(--mono); font-weight: 700; font-size: 0.62em; letter-spacing: 0.02em; line-height: 1; }
+
+/* "see everything" button + dialog */
+.all-btn { align-self: flex-start; margin-top: 1rem; font-family: var(--mono); font-size: 0.8rem; color: var(--fg); background: transparent; border: 1px solid var(--fg); padding: 0.55rem 0.9rem; cursor: pointer; display: inline-flex; gap: 0.6rem; align-items: center; }
+.all-btn span { color: var(--bg); background: var(--fg); padding: 0 0.4rem; font-size: 0.72rem; }
+.all-btn:hover { background: var(--fg); color: var(--bg); }
+.all-btn:hover span { background: var(--bg); color: var(--fg); }
+.all-btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+.all-dlg { width: min(720px, calc(100vw - 2rem)); max-height: min(80vh, 760px); padding: 0; background: var(--bg); color: var(--fg); border: 1px solid var(--fg); overflow: hidden; }
+.all-dlg[open] { display: flex; flex-direction: column; }
+.all-dlg::backdrop { background: rgba(0, 0, 0, 0.75); }
+.all-head { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line); }
+.all-head h3 { font-size: 1.1rem; font-weight: 700; }
+.all-x { font-family: var(--mono); color: var(--muted); background: transparent; border: 1px solid var(--line); width: 2rem; height: 2rem; cursor: pointer; }
+.all-x:hover { color: var(--fg); border-color: var(--fg); }
+.all-body { overflow-y: auto; padding: 1.25rem; display: grid; gap: 1.5rem; }
+.all-body h4 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+.all-body ul { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; padding: 0; margin: 0; }
+.all-body li { font-family: var(--mono); font-size: 0.78rem; padding: 0.15rem 0.5rem; border: 1px solid var(--line); color: var(--ice); }
+.all-btn { pointer-events: auto; }
