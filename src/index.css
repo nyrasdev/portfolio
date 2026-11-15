@@ -194,3 +194,4 @@ footer { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); disp
 .win-bar em { margin-left: 0.5rem; font-family: var(--mono); font-size: 0.7rem; font-style: normal; color: var(--muted); }
 .win video { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 750; background: var(--bg); }
 .feature.nv h3 { font-size: clamp(2.6rem, 4.2vw, 4.5rem); overflow-wrap: normal; }
+.tech-txt { font-family: var(--mono); font-weight: 700; font-size: 0.62em; letter-spacing: 0.02em; line-height: 1; }

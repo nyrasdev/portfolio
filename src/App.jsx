@@ -32,6 +32,7 @@ const INAP_STACK = ['C++20', 'ESP-IDF', 'CMake', '802.11', 'ESP32 · S3 · C3 ·
 const TOOLS = [
   'python', 'javascript', 'c', 'html-css', 'sql', 'react', 'vite', 'opencv', 'tensorflow-lite',
   'raspberry-pi', 'esp32', 'github', 'claude-code', 'codex', 'vs-code', 'vercel', 'linux', 'gnu', 'unix', 'nixos', 'nix', 'docker', 'bash',
+  'assembly', 'lfs', 'gcc', 'binutils', 'glibc', 'gnu-make', 'grub',
 ].map(slug => ({ image: `/stack/${slug}.svg`, title: slug.replace(/-/g, ' ') }));
 
 
@@ -50,6 +51,12 @@ const TECH = [
   [SiGithub, 'GitHub', 'https://github.com/nyrasdev'], [SiClaude, 'Claude Code', 'https://claude.com/claude-code'],
   [SiVercel, 'Vercel', 'https://vercel.com'], [SiLinux, 'Linux', 'https://kernel.org'],
   [SiGnu, 'GNU', 'https://www.gnu.org'], [SiNixos, 'NixOS', 'https://nixos.org'], [SiDocker, 'Docker', 'https://www.docker.com'], [SiGnubash, 'Bash', 'https://www.gnu.org/software/bash/'],
+  [() => <span className="tech-txt">ASM</span>, 'Assembly', 'https://en.wikipedia.org/wiki/Assembly_language'],
+  [() => <span className="tech-txt">LFS</span>, 'Linux From Scratch', 'https://www.linuxfromscratch.org'],
+  [() => <span className="tech-txt">GCC</span>, 'GCC', 'https://gcc.gnu.org'],
+  [() => <span className="tech-txt">ld</span>, 'GNU Binutils', 'https://www.gnu.org/software/binutils/'],
+  [() => <span className="tech-txt">make</span>, 'GNU Make', 'https://www.gnu.org/software/make/'],
+  [() => <span className="tech-txt">GRUB</span>, 'GRUB', 'https://www.gnu.org/software/grub/'],
 ].map(([Icon, title, href]) => ({ node: <Icon />, title, href }));
 
 // ---- Copy in both languages (EN / ES) ----
@@ -72,10 +79,10 @@ const T = {
     inBody: "It listens to 802.11 management traffic, runs it through its own parser and detection rules, and tells you when something looks off and why: deauth floods, evil twins, auth floods and full attack chains. Passive by design, it never transmits. The whole detector fits in about 28 KB.",
     inLink: 'github.com/nyrasdev/inapparency ↗', inHint: 'live OLED, fresh critical alert',
     faK: 'Operating system · In progress', faT: 'My own Linux distro based on Arch, built with cybersecurity as the priority. The name is fire + Arch, from firewall and Arch Linux.',
-    lfsK: 'Operating system · Built from source', lfsT: 'An operating system I built by hand with Linux From Scratch: compiling and configuring the whole system from source code.',
+    lfsK: 'Operating system · Built from source', lfsT: 'An operating system I built by hand with Linux From Scratch: a cross-toolchain (GCC, Binutils, Glibc), then the whole system compiled and configured from source, kernel and GRUB included. That is the low-level side of what I do, down to Assembly.',
     mesaK: 'B2B SaaS · Beta', mesaT: 'Order tracking for micro restaurants and small shops, built to make their accounting faster and easier. In beta, currently being tested by a micro restaurant.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croatia', p1d: 'Oct 2026', p2: 'WRO Panamá National', p2d: '2026', r1: '3rd', r2: '2nd',
-    stackP: 'Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker) and the tools I ship with.',
+    stackP: 'Languages, hardware, the Unix side (GNU, NixOS, Nix, Docker, LFS), Assembly and the tools I ship with.',
     dm: 'or DM', onIg: 'on Instagram.', contact: 'Contact', lang: 'ES', langLabel: 'Ver en español',
   },
   es: {
@@ -96,10 +103,10 @@ const T = {
     inBody: 'Escucha el tráfico de gestión 802.11, lo pasa por su propio parser y reglas de detección, y te avisa cuando algo no cuadra y por qué: inundaciones de deauth, evil twins, auth floods y cadenas de ataque completas. Es pasivo por diseño: nunca transmite. Todo el detector cabe en unos 28 KB.',
     inLink: 'github.com/nyrasdev/inapparency ↗', inHint: 'OLED en vivo, alerta crítica',
     faK: 'Sistema operativo · En desarrollo', faT: 'Mi propia distro de Linux basada en Arch, hecha con la ciberseguridad como prioridad. El nombre es fire + Arch, de firewall y Arch Linux.',
-    lfsK: 'Sistema operativo · Desde el código fuente', lfsT: 'Un sistema operativo que armé a mano con Linux From Scratch: compilando y configurando todo el sistema desde el código fuente.',
+    lfsK: 'Sistema operativo · Desde el código fuente', lfsT: 'Un sistema operativo que armé a mano con Linux From Scratch: una cross-toolchain (GCC, Binutils, Glibc) y luego todo el sistema compilado y configurado desde el código fuente, con kernel y GRUB incluidos. Es el lado de bajo nivel de lo que hago, hasta Assembly.',
     mesaK: 'SaaS B2B · Beta', mesaT: 'Control de pedidos para micro restaurantes y pequeñas tiendas, hecho para que su contabilidad sea más rápida y fácil. En beta, ahora mismo en pruebas con un micro restaurante.',
     p1: 'WRO Open Championship Europe', p1w: 'Zagreb, Croacia', p1d: 'oct 2026', p2: 'WRO Nacional Panamá', p2d: '2026', r1: '3.º', r2: '2.º',
-    stackP: 'Lenguajes, hardware, el lado Unix (GNU, NixOS, Nix, Docker) y las herramientas con las que trabajo.',
+    stackP: 'Lenguajes, hardware, el lado Unix (GNU, NixOS, Nix, Docker, LFS), Assembly y las herramientas con las que trabajo.',
     dm: 'o escríbeme por', onIg: 'en Instagram.', contact: 'Contacto', lang: 'EN', langLabel: 'View in English',
   },
 };
